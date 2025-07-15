@@ -1491,6 +1491,61 @@ async def get_sessions():
     sessions = await db.chat_sessions.find().sort("updated_at", -1).to_list(100)
     return [ChatSession(**session) for session in sessions]
 
+@api_router.post("/sessions/{session_id}/upload-document")
+async def upload_document(session_id: str, file: UploadFile = File(...)):
+    # Verify session exists
+    session = await db.chat_sessions.find_one({"id": session_id})
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    # Validate file type
+    if not is_supported_file_type(file.filename):
+        supported_types = ", ".join(get_supported_file_types())
+        raise HTTPException(
+            status_code=400, 
+            detail=f"Unsupported file type. Supported formats: {supported_types}"
+        )
+    
+    # Read and process document
+    file_content = await file.read()
+    document_text = await extract_text_from_document(file_content, file.filename)
+    
+    # Get file type
+    file_type = file.filename.lower().split('.')[-1]
+    
+    # Save document
+    document = Document(
+        filename=file.filename,
+        content=document_text,
+        file_size=len(file_content),
+        file_type=file_type
+    )
+    await db.documents.insert_one(document.dict())
+    
+    # Update session with document info (both new and old fields for compatibility)
+    await db.chat_sessions.update_one(
+        {"id": session_id},
+        {
+            "$set": {
+                "document_filename": file.filename,
+                "document_content": document_text,
+                "document_type": file_type,
+                # Keep old fields for backward compatibility
+                "pdf_filename": file.filename,
+                "pdf_content": document_text,
+                "updated_at": datetime.utcnow()
+            }
+        }
+    )
+    
+    return {
+        "message": "Document uploaded successfully",
+        "filename": file.filename,
+        "file_type": file_type,
+        "content_length": len(document_text)
+    }
+
+# Keep the old PDF upload endpoint for backward compatibility
 @api_router.post("/sessions/{session_id}/upload-pdf")
 async def upload_pdf(session_id: str, file: UploadFile = File(...)):
     # Verify session exists
@@ -1510,15 +1565,19 @@ async def upload_pdf(session_id: str, file: UploadFile = File(...)):
     pdf_doc = Document(
         filename=file.filename,
         content=pdf_text,
-        file_size=len(file_content)
+        file_size=len(file_content),
+        file_type="pdf"
     )
-    await db.pdf_documents.insert_one(pdf_doc.dict())
+    await db.documents.insert_one(pdf_doc.dict())
     
     # Update session with PDF info
     await db.chat_sessions.update_one(
         {"id": session_id},
         {
             "$set": {
+                "document_filename": file.filename,
+                "document_content": pdf_text,
+                "document_type": "pdf",
                 "pdf_filename": file.filename,
                 "pdf_content": pdf_text,
                 "updated_at": datetime.utcnow()
@@ -1529,6 +1588,7 @@ async def upload_pdf(session_id: str, file: UploadFile = File(...)):
     return {
         "message": "PDF uploaded successfully",
         "filename": file.filename,
+        "file_type": "pdf",
         "content_length": len(pdf_text)
     }
 
