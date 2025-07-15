@@ -1491,6 +1491,14 @@ async def get_sessions():
     sessions = await db.chat_sessions.find().sort("updated_at", -1).to_list(100)
     return [ChatSession(**session) for session in sessions]
 
+@api_router.get("/supported-formats")
+async def get_supported_formats():
+    """Get list of supported document formats"""
+    return {
+        "supported_formats": get_supported_file_types(),
+        "message": "Supported document formats for upload"
+    }
+
 @api_router.post("/sessions/{session_id}/upload-document")
 async def upload_document(session_id: str, file: UploadFile = File(...)):
     # Verify session exists
