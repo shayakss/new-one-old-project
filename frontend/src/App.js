@@ -936,8 +936,8 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
   };
 
   const generateQuestions = async (questionType = 'mixed', chapterSegment = null) => {
-    if (!currentSession || !currentSession.pdf_filename) {
-      alert('Please upload a PDF first');
+    if (!currentSession || !(currentSession.document_filename || currentSession.pdf_filename)) {
+      alert('Please upload a document first');
       return;
     }
 
