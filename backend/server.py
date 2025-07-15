@@ -1373,7 +1373,7 @@ async def extract_text_from_docx(file_content: bytes) -> str:
     """Extract text from DOCX files"""
     try:
         doc_file = io.BytesIO(file_content)
-        doc = Document(doc_file)
+        doc = DocxDocument(doc_file)
         text = ""
         for paragraph in doc.paragraphs:
             text += paragraph.text + "\n"
