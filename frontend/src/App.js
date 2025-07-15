@@ -1153,14 +1153,14 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
 
               {/* Quick Actions */}
               <div className="flex flex-wrap gap-3">
-                {/* Upload PDF Button */}
+                {/* Upload Document Button */}
                 <input
                   type="file"
                   ref={fileInputRef}
-                  accept=".pdf"
+                  accept=".pdf,.docx,.xlsx,.xls,.csv,.txt,.pptx"
                   onChange={(e) => {
                     if (e.target.files[0]) {
-                      uploadPDF(e.target.files[0]);
+                      uploadDocument(e.target.files[0]);
                     }
                   }}
                   className="hidden"
