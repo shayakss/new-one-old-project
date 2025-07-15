@@ -26,7 +26,7 @@ import threading
 # Document processing imports
 import openpyxl
 import pandas as pd
-from docx import Document
+from docx import Document as DocxDocument
 from pptx import Presentation
 import csv
 import mimetypes
