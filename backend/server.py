@@ -630,6 +630,11 @@ class ChatSession(BaseModel):
     title: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
+    document_filename: Optional[str] = None  # Changed from pdf_filename
+    document_content: Optional[str] = None   # Changed from pdf_content
+    document_type: Optional[str] = None      # New field to store document type
+    
+    # Keep old fields for backward compatibility
     pdf_filename: Optional[str] = None
     pdf_content: Optional[str] = None
 
