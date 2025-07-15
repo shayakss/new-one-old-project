@@ -1645,7 +1645,7 @@ Please answer questions based on this PDF content. Be specific and reference the
         else:
             ai_messages.append({
                 "role": "system", 
-                "content": "You are a helpful AI assistant. No PDF has been uploaded yet. Please ask the user to upload a PDF document first."
+                "content": "You are a helpful AI assistant. No document has been uploaded yet. Please ask the user to upload a document first."
             })
     
     # Add recent conversation history
