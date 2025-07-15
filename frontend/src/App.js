@@ -790,6 +790,19 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
     }
   };
 
+  const getFileIcon = (fileType) => {
+    const icons = {
+      pdf: '📄',
+      docx: '📝',
+      xlsx: '📊',
+      xls: '📊',
+      csv: '📈',
+      txt: '📃',
+      pptx: '📽️'
+    };
+    return icons[fileType] || '📄';
+  };
+
   const uploadDocument = async (file) => {
     if (!currentSession) {
       alert('Please create a session first');
