@@ -1188,10 +1188,12 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                   </div>
                   <div>
                     <h2 className="text-lg font-semibold text-white">{getFeatureTitle()}</h2>
-                    {currentSession?.pdf_filename && (
+                    {(currentSession?.document_filename || currentSession?.pdf_filename) && (
                       <div className="flex items-center space-x-2 mt-1">
                         <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                        <span className="text-sm text-gray-400">{currentSession.pdf_filename}</span>
+                        <span className="text-sm text-gray-400">
+                          {currentSession.document_filename || currentSession.pdf_filename}
+                        </span>
                       </div>
                     )}
                   </div>
