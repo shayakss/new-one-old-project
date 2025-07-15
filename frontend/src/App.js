@@ -790,6 +790,56 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
     }
   };
 
+  const uploadDocument = async (file) => {
+    if (!currentSession) {
+      alert('Please create a session first');
+      return;
+    }
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await apiClient.post(`/sessions/${currentSession.id}/upload-document`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      setCurrentSession(prev => ({
+        ...prev,
+        document_filename: response.data.filename,
+        document_type: response.data.file_type,
+        // Keep old fields for backward compatibility
+        pdf_filename: response.data.filename
+      }));
+
+      setSessions(prev => prev.map(s => 
+        s.id === currentSession.id 
+          ? { 
+              ...s, 
+              document_filename: response.data.filename,
+              document_type: response.data.file_type,
+              pdf_filename: response.data.filename 
+            }
+          : s
+      ));
+
+      const fileIcon = getFileIcon(response.data.file_type);
+      setMessages(prev => [...prev, createMessage(
+        'system',
+        `${fileIcon} ${response.data.file_type.toUpperCase()} "${response.data.filename}" uploaded successfully! You can now use all features with this document.`,
+        'system'
+      )]);
+
+    } catch (error) {
+      alert('Error uploading document: ' + (error.response?.data?.detail || error.message));
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const uploadPDF = async (file) => {
     if (!currentSession) {
       alert('Please create a session first');
