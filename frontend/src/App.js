@@ -1136,10 +1136,12 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                       <div className="flex items-center justify-between">
                         <div className="flex-1 min-w-0">
                           <div className="text-sm font-medium text-white truncate">{session.title}</div>
-                          {session.pdf_filename && (
+                          {(session.document_filename || session.pdf_filename) && (
                             <div className="text-xs text-gray-400 truncate mt-1 flex items-center">
-                              <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
-                              {session.pdf_filename}
+                              <span className="mr-2">
+                                {getFileIcon(session.document_type || 'pdf')}
+                              </span>
+                              {session.document_filename || session.pdf_filename}
                             </div>
                           )}
                         </div>
