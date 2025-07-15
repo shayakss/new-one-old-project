@@ -1582,10 +1582,10 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                     <h3 className="font-heading-sm text-primary mb-2">Ready to Chat!</h3>
                     <p className="font-body text-secondary">
                       {currentFeature === 'general_ai' 
-                        ? "Ask me anything, or upload a PDF to get started with document analysis."
-                        : currentSession?.pdf_filename 
-                          ? "Your PDF is loaded. Ask questions or use the features above!"
-                          : "Upload a PDF document to start chatting with your content."
+                        ? "Ask me anything, or upload a document to get started with document analysis."
+                        : (currentSession?.document_filename || currentSession?.pdf_filename)
+                          ? "Your document is loaded. Ask questions or use the features above!"
+                          : "Upload a document to start chatting with your content."
                       }
                     </p>
                   </div>
