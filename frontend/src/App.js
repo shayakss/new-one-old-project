@@ -375,7 +375,7 @@ const HomePage = ({ setCurrentView }) => {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-white mb-2">∞</div>
-                <div className="text-sm text-gray-400">PDF Uploads</div>
+                <div className="text-sm text-gray-400">Document Uploads</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-white mb-2">24/7</div>
