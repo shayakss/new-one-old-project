@@ -1243,7 +1243,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                   ) : (
                     <>
                       <span>📄</span>
-                      <span>Upload PDF</span>
+                      <span>Upload Document</span>
                     </>
                   )}
                 </button>
