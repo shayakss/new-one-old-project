@@ -253,12 +253,12 @@ const HomePage = ({ setCurrentView }) => {
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               Transform Your
               <span className="bg-gradient-to-r from-purple-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent block">
-                PDFs into Conversations
+                Documents into Conversations
               </span>
             </h2>
             
             <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Upload any PDF document and engage in intelligent conversations with your content. 
+              Upload any document (PDF, Word, Excel, PowerPoint, CSV, TXT) and engage in intelligent conversations with your content. 
               Get instant answers, generate summaries, and unlock insights with the power of AI.
             </p>
 
