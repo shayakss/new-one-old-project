@@ -1732,7 +1732,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder={getPlaceholder()}
-                    disabled={loading || (currentFeature !== 'general_ai' && currentFeature !== 'system_health' && !currentSession?.pdf_filename)}
+                    disabled={loading || (currentFeature !== 'general_ai' && currentFeature !== 'system_health' && !(currentSession?.document_filename || currentSession?.pdf_filename))}
                     className="w-full bg-gray-800/70 backdrop-blur-sm border border-gray-600/50 rounded-2xl px-4 py-4 text-white placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-green-400/50 focus:border-green-400/50 disabled:opacity-50 transition-all duration-200 shadow-lg"
                     rows={inputMessage.split('\n').length || 1}
                     style={{minHeight: '56px', maxHeight: '120px'}}
