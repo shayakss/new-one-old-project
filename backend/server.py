@@ -1624,22 +1624,27 @@ async def send_message(session_id: str, request: SendMessageRequest):
     ai_messages = []
     
     if request.feature_type == "general_ai":
-        # General AI chat - no PDF context
+        # General AI chat - no document context
         ai_messages.append({
             "role": "system", 
             "content": "You are a helpful AI assistant. Answer any questions the user has with accurate and helpful information."
         })
     else:
-        # PDF-based features
-        if session.get("pdf_content"):
-            pdf_content = session["pdf_content"]
+        # Document-based features
+        # Check for document content (prioritize new fields, fall back to old)
+        document_content = session.get("document_content") or session.get("pdf_content")
+        document_filename = session.get("document_filename") or session.get("pdf_filename")
+        document_type = session.get("document_type") or "pdf"
+        
+        if document_content:
             if request.feature_type == "chat":
-                system_message = f"""You are an AI assistant specialized in analyzing PDF documents. 
+                system_message = f"""You are an AI assistant specialized in analyzing documents. 
 
-PDF Content:
-{pdf_content[:4000]}...
+Document: {document_filename} (Type: {document_type.upper()})
+Content:
+{document_content[:4000]}...
 
-Please answer questions based on this PDF content. Be specific and reference the document when possible."""
+Please answer questions based on this document content. Be specific and reference the document when possible."""
             
             ai_messages.append({"role": "system", "content": system_message})
         else:
