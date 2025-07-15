@@ -2097,10 +2097,10 @@ async def export_conversation(request: ExportRequest):
         )
     elif request.export_format == "docx":
         # Generate DOCX using python-docx
-        from docx import Document
+        from docx import Document as DocxDocument
         from io import BytesIO
         
-        doc = Document()
+        doc = DocxDocument()
         doc.add_heading(f"Chat Session: {session['title']}", 0)
         
         # Add session info
