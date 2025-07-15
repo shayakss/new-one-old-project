@@ -1506,7 +1506,7 @@ async def upload_pdf(session_id: str, file: UploadFile = File(...)):
     pdf_text = await extract_text_from_pdf(file_content)
     
     # Save PDF document
-    pdf_doc = PDFDocument(
+    pdf_doc = Document(
         filename=file.filename,
         content=pdf_text,
         file_size=len(file_content)
