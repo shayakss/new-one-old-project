@@ -638,12 +638,13 @@ class ChatSession(BaseModel):
     pdf_filename: Optional[str] = None
     pdf_content: Optional[str] = None
 
-class PDFDocument(BaseModel):
+class Document(BaseModel):  # Renamed from PDFDocument
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     filename: str
     content: str
     upload_date: datetime = Field(default_factory=datetime.utcnow)
     file_size: int
+    file_type: str = "pdf"  # New field to store document type
 
 class SendMessageRequest(BaseModel):
     session_id: str
