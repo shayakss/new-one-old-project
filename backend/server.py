@@ -23,6 +23,14 @@ import asyncio
 import time
 import threading
 
+# Document processing imports
+import openpyxl
+import pandas as pd
+from docx import Document
+from pptx import Presentation
+import csv
+import mimetypes
+
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
