@@ -1022,13 +1022,14 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
   };
 
   const getPlaceholder = () => {
+    const hasDocument = currentSession?.document_filename || currentSession?.pdf_filename;
     switch (currentFeature) {
-      case 'chat': return currentSession?.pdf_filename 
-        ? "Ask a question about your PDF..." 
-        : "Upload a PDF to start chatting...";
+      case 'chat': return hasDocument 
+        ? "Ask a question about your document..." 
+        : "Upload a document to start chatting...";
       case 'general_ai': return "Ask me anything...";
-      case 'question_generation': return "Upload a PDF and generate questions...";
-      case 'quiz_generation': return "Upload a PDF and create quizzes...";
+      case 'question_generation': return "Upload a document and generate questions...";
+      case 'quiz_generation': return "Upload a document and create quizzes...";
       case 'system_health': return "System health monitoring - no input required";
       default: return "Type a message...";
     }
