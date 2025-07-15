@@ -1348,8 +1348,9 @@ async def perform_comprehensive_health_check() -> SystemHealthStatus:
         uptime=uptime
     )
 
-# PDF Processing Functions
+# Document Processing Functions
 async def extract_text_from_pdf(file_content: bytes) -> str:
+    """Extract text from PDF files"""
     try:
         pdf_file = io.BytesIO(file_content)
         pdf_reader = PyPDF2.PdfReader(pdf_file)
@@ -1359,6 +1360,116 @@ async def extract_text_from_pdf(file_content: bytes) -> str:
         return text.strip()
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error processing PDF: {str(e)}")
+
+async def extract_text_from_docx(file_content: bytes) -> str:
+    """Extract text from DOCX files"""
+    try:
+        doc_file = io.BytesIO(file_content)
+        doc = Document(doc_file)
+        text = ""
+        for paragraph in doc.paragraphs:
+            text += paragraph.text + "\n"
+        return text.strip()
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error processing DOCX: {str(e)}")
+
+async def extract_text_from_xlsx(file_content: bytes) -> str:
+    """Extract text from XLSX files"""
+    try:
+        excel_file = io.BytesIO(file_content)
+        workbook = openpyxl.load_workbook(excel_file)
+        text = ""
+        
+        for sheet_name in workbook.sheetnames:
+            sheet = workbook[sheet_name]
+            text += f"Sheet: {sheet_name}\n"
+            
+            for row in sheet.iter_rows(values_only=True):
+                row_text = []
+                for cell in row:
+                    if cell is not None:
+                        row_text.append(str(cell))
+                if row_text:
+                    text += " | ".join(row_text) + "\n"
+            text += "\n"
+        
+        return text.strip()
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error processing XLSX: {str(e)}")
+
+async def extract_text_from_csv(file_content: bytes) -> str:
+    """Extract text from CSV files"""
+    try:
+        csv_file = io.StringIO(file_content.decode('utf-8'))
+        reader = csv.reader(csv_file)
+        text = ""
+        
+        for row in reader:
+            text += " | ".join(row) + "\n"
+        
+        return text.strip()
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error processing CSV: {str(e)}")
+
+async def extract_text_from_txt(file_content: bytes) -> str:
+    """Extract text from TXT files"""
+    try:
+        return file_content.decode('utf-8').strip()
+    except UnicodeDecodeError:
+        try:
+            return file_content.decode('latin-1').strip()
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=f"Error processing TXT: {str(e)}")
+
+async def extract_text_from_pptx(file_content: bytes) -> str:
+    """Extract text from PPTX files"""
+    try:
+        ppt_file = io.BytesIO(file_content)
+        presentation = Presentation(ppt_file)
+        text = ""
+        
+        for slide_num, slide in enumerate(presentation.slides, 1):
+            text += f"Slide {slide_num}:\n"
+            
+            for shape in slide.shapes:
+                if hasattr(shape, "text"):
+                    text += shape.text + "\n"
+            text += "\n"
+        
+        return text.strip()
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error processing PPTX: {str(e)}")
+
+async def extract_text_from_document(file_content: bytes, filename: str) -> str:
+    """Extract text from various document formats"""
+    file_extension = filename.lower().split('.')[-1]
+    
+    extractors = {
+        'pdf': extract_text_from_pdf,
+        'docx': extract_text_from_docx,
+        'xlsx': extract_text_from_xlsx,
+        'xls': extract_text_from_xlsx,  # Using same function for now
+        'csv': extract_text_from_csv,
+        'txt': extract_text_from_txt,
+        'pptx': extract_text_from_pptx,
+    }
+    
+    if file_extension in extractors:
+        return await extractors[file_extension](file_content)
+    else:
+        raise HTTPException(
+            status_code=400, 
+            detail=f"Unsupported file format: {file_extension}. Supported formats: {', '.join(extractors.keys())}"
+        )
+
+def get_supported_file_types() -> List[str]:
+    """Return list of supported file types"""
+    return ['pdf', 'docx', 'xlsx', 'xls', 'csv', 'txt', 'pptx']
+
+def is_supported_file_type(filename: str) -> bool:
+    """Check if file type is supported"""
+    file_extension = filename.lower().split('.')[-1]
+    return file_extension in get_supported_file_types()
 
 # API Routes
 @api_router.post("/sessions", response_model=ChatSession)
