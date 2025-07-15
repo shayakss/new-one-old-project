@@ -1970,7 +1970,7 @@ async def advanced_search(request: SearchRequest):
     if request.search_type in ["all", "pdfs"]:
         # Search in PDF documents
         pdf_query = {"content": {"$regex": request.query, "$options": "i"}}
-        pdf_docs = await db.pdf_documents.find(pdf_query).limit(request.limit).to_list(request.limit)
+        pdf_docs = await db.documents.find(pdf_query).limit(request.limit).to_list(request.limit)
         
         for doc in pdf_docs:
             # Find snippet around the search term
