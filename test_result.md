@@ -460,6 +460,24 @@ backend:
         agent: "testing"
         comment: "Verified insights dashboard functionality is working correctly. The API successfully aggregates usage statistics, feature usage patterns, popular PDFs, and daily usage trends. All analytics queries return appropriate responses and handle errors correctly."
 
+  - task: "Document Upload Functionality (All Formats)"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "user"
+        comment: "User requested comprehensive testing of document upload functionality. The ChatPDF application should support uploading various document types (PDF, DOCX, XLSX, CSV, TXT, PPTX) and extract text from them. Need to test: 1) Supported formats endpoint, 2) Document upload for each format, 3) Universal upload endpoint, 4) Backward compatibility, 5) Error handling, 6) Session integration"
+      - working: false
+        agent: "testing"
+        comment: "Found critical issue with DOCX processing due to naming conflict between docx.Document class and backend Document model. Error: 'BaseModel.__init__() takes 1 positional argument but 2 were given'. Fixed by renaming import from 'from docx import Document' to 'from docx import Document as DocxDocument' and updating all references."
+      - working: true
+        agent: "testing"
+        comment: "COMPREHENSIVE TESTING COMPLETED: All document upload functionality tests passed with 100% success rate (6/6 tests). ✅ Test 1: Supported Formats Endpoint - Returns all expected document types (PDF, DOCX, XLSX, XLS, CSV, TXT, PPTX), ✅ Test 2: Universal Upload Endpoint - Successfully handles all document formats with proper text extraction, ✅ Test 3: Backward Compatibility - Legacy /api/sessions/{session_id}/upload-pdf endpoint still works correctly, ✅ Test 4: Error Handling - Properly rejects unsupported file types with appropriate error messages, ✅ Test 5: Session Integration - Documents are properly stored in sessions with both new and legacy field names for compatibility, ✅ Test 6: Text Extraction Accuracy - All formats extract text correctly with proper content verification. Fixed DOCX naming conflict issue. All document types (PDF: 245 chars, DOCX: 271 chars, XLSX: 203 chars, CSV: 224 chars, TXT: 248 chars, PPTX: 348 chars) process successfully with accurate text extraction."
+
 frontend:
   - task: "Professional Typography and Font Improvements"
     implemented: true
