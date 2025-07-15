@@ -1167,7 +1167,8 @@ async def check_dependencies() -> tuple[bool, str, list]:
     required_packages = [
         'fastapi', 'uvicorn', 'motor', 'pymongo', 'httpx', 'PyPDF2',
         'anthropic', 'emergentintegrations', 'psutil', 'reportlab',
-        'python-docx', 'python-dotenv', 'pydantic'
+        'python-docx', 'python-dotenv', 'pydantic', 'openpyxl', 
+        'pandas', 'python-pptx', 'lxml'
     ]
     
     missing_packages = []
