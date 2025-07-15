@@ -2130,7 +2130,7 @@ async def get_insights():
     total_messages = await db.chat_messages.count_documents({})
     
     # Get total PDFs uploaded
-    total_pdfs = await db.pdf_documents.count_documents({})
+    total_pdfs = await db.documents.count_documents({})
     
     # Get feature usage statistics
     feature_usage = await db.chat_messages.aggregate([
