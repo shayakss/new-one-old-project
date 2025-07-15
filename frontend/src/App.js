@@ -961,8 +961,8 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
   };
 
   const generateQuiz = async (quizType = 'manual', difficulty = 'medium', questionCount = 10) => {
-    if (!currentSession || !currentSession.pdf_filename) {
-      alert('Please upload a PDF first');
+    if (!currentSession || !(currentSession.document_filename || currentSession.pdf_filename)) {
+      alert('Please upload a document first');
       return;
     }
 
