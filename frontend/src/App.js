@@ -1655,7 +1655,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                             <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
                           </svg>
                         ) : (
-                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                         )}
@@ -1664,7 +1664,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                       {/* Message Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center mb-1">
-                          <span className="text-sm font-semibold text-gray-200">
+                          <span className="text-xs sm:text-sm font-semibold text-gray-200">
                             {message.role === 'user' ? 'You' : message.role === 'system' ? 'System' : 'Baloch AI'}
                           </span>
                           <span className="text-xs text-gray-500 ml-2">
