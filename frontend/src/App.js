@@ -1721,7 +1721,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                     {/* Typing Indicator */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center mb-1">
-                        <span className="text-sm font-semibold text-gray-200">ChatGPT</span>
+                        <span className="text-sm font-semibold text-gray-200">Baloch AI</span>
                         <span className="text-xs text-gray-500 ml-2">typing...</span>
                       </div>
                       
