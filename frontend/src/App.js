@@ -1672,7 +1672,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                           </span>
                         </div>
                         
-                        <div className="text-gray-100 text-base leading-relaxed">
+                        <div className="text-gray-100 text-sm sm:text-base leading-relaxed">
                           {containsMarkdown(message.content) ? (
                             <div className="prose prose-invert max-w-none">
                               {message.role === 'assistant' ? (
