@@ -376,6 +376,85 @@ body {
   animation: fadeSlideIn 0.3s ease-out;
 }
 
+/* Responsive design for chat section */
+@media (max-width: 768px) {
+  .chatgpt-message-container .max-w-4xl {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .chatgpt-message-container .px-4 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .chatgpt-message-container .py-4 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .chatgpt-message-container .space-x-4 > * + * {
+    margin-left: 0.75rem;
+  }
+  
+  .chatgpt-input-container .max-w-4xl {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .chatgpt-input-container .px-4 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .chatgpt-input-container .py-4 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatgpt-message-container .max-w-4xl {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .chatgpt-message-container .px-4 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .chatgpt-message-container .w-8 {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .chatgpt-message-container .h-8 {
+    height: 1.5rem;
+  }
+  
+  .chatgpt-message-container .text-base {
+    font-size: 0.875rem;
+  }
+  
+  .chatgpt-input-container .max-w-4xl {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .chatgpt-input-container .px-4 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .chatgpt-input-container .py-4 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
