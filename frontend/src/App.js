@@ -1665,7 +1665,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center mb-1">
                           <span className="text-sm font-semibold text-gray-200">
-                            {message.role === 'user' ? 'You' : message.role === 'system' ? 'System' : 'ChatGPT'}
+                            {message.role === 'user' ? 'You' : message.role === 'system' ? 'System' : 'Baloch AI'}
                           </span>
                           <span className="text-xs text-gray-500 ml-2">
                             {message.timestamp ? new Date(message.timestamp).toLocaleTimeString() : ''}
