@@ -1779,7 +1779,6 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                             ? 'bg-red-500 text-white hover:bg-red-600' 
                             : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
                         }`}
-                        }`}
                         disabled={loading}
                       >
                         {isListening ? (
