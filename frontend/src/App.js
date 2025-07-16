@@ -307,7 +307,7 @@ const HomePage = ({ setCurrentView }) => {
                 </svg>
               }
               title="AI Chat"
-              description="Have natural conversations with your PDF documents. Ask questions and get instant, contextual answers."
+              description="Have natural conversations with your documents. Ask questions and get instant, contextual answers."
               gradient="from-purple-500 to-pink-500"
             />
             <FeatureCard
