@@ -5,6 +5,41 @@ import ReactMarkdown from 'react-markdown';
 import { classifyError, handleErrorWithRetry, NotificationManager, ConnectionChecker } from './utils/errorHandling';
 import NotificationContainer from './components/NotificationContainer';
 
+// Typewriter Effect Component
+const TypewriterText = ({ text, speed = 30, onComplete }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const indexRef = useRef(0);
+
+  useEffect(() => {
+    if (!text) return;
+    
+    setDisplayedText('');
+    setIsTyping(true);
+    indexRef.current = 0;
+
+    const timer = setInterval(() => {
+      if (indexRef.current < text.length) {
+        setDisplayedText(prev => prev + text[indexRef.current]);
+        indexRef.current++;
+      } else {
+        setIsTyping(false);
+        clearInterval(timer);
+        if (onComplete) onComplete();
+      }
+    }, speed);
+
+    return () => clearInterval(timer);
+  }, [text, speed, onComplete]);
+
+  return (
+    <span>
+      {displayedText}
+      {isTyping && <span className="animate-pulse">|</span>}
+    </span>
+  );
+};
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 const API = `${BACKEND_URL}/api`;
 
