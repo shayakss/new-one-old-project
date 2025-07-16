@@ -1684,7 +1684,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                               {message.role === 'assistant' ? (
                                 <TypewriterText 
                                   text={message.content || ''} 
-                                  speed={30}
+                                  speed={15}
                                 />
                               ) : (
                                 message.content || ''
