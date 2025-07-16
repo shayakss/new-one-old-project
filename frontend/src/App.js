@@ -1756,10 +1756,10 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
               <div ref={messagesEndRef} />
             </div>
 
-            {/* ChatGPT-style Message Input Area */}
+            {/* Baloch AI-style Message Input Area */}
             <div className="chatgpt-input-container border-t border-gray-700/50 bg-gray-800">
-              <div className="max-w-4xl mx-auto px-4 py-4">
-                <div className="flex items-end space-x-3">
+              <div className="max-w-4xl mx-auto px-2 sm:px-4 py-2 sm:py-4">
+                <div className="flex items-end space-x-2 sm:space-x-3">
                   <div className="flex-1 relative">
                     <textarea
                       value={inputMessage}
@@ -1767,17 +1767,18 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                       onKeyPress={handleKeyPress}
                       placeholder={getPlaceholder()}
                       disabled={loading || (currentFeature !== 'general_ai' && currentFeature !== 'system_health' && !(currentSession?.document_filename || currentSession?.pdf_filename))}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-white placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                       rows={inputMessage.split('\n').length || 1}
-                      style={{minHeight: '48px', maxHeight: '120px'}}
+                      style={{minHeight: '40px', maxHeight: '120px'}}
                     />
                     {recognitionRef.current && (currentFeature === 'chat' || currentFeature === 'general_ai') && (
                       <button
                         onClick={isListening ? stopListening : startListening}
-                        className={`absolute right-3 bottom-3 w-8 h-8 rounded-md flex items-center justify-center transition-all duration-200 ${
+                        className={`absolute right-2 sm:right-3 bottom-2 sm:bottom-3 w-6 h-6 sm:w-8 sm:h-8 rounded-md flex items-center justify-center transition-all duration-200 ${
                           isListening 
                             ? 'bg-red-500 text-white hover:bg-red-600' 
                             : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                        }`}
                         }`}
                         disabled={loading}
                       >
