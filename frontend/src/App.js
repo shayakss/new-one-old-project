@@ -327,7 +327,7 @@ const HomePage = ({ setCurrentView }) => {
                 </svg>
               }
               title="Quiz Generator"
-              description="Generate daily revision quizzes or custom quizzes from your PDF library with adjustable difficulty levels."
+              description="Generate daily revision quizzes or custom quizzes from your document library with adjustable difficulty levels."
               gradient="from-blue-500 to-indigo-500"
             />
             <FeatureCard
