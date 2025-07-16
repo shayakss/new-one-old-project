@@ -1674,36 +1674,32 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                 ))
               )}
               {loading && (
-                <div className="flex justify-start message-bubble-container mb-6">
-                  <div className="flex items-start space-x-3 max-w-4xl">
+                <div className="chatgpt-ai-message">
+                  <div className="max-w-4xl mx-auto px-4 py-4 flex items-start space-x-4">
                     {/* AI Avatar */}
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center shadow-lg">
-                      <svg className="w-5 h-5 text-white animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                        <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
 
-                    {/* Enhanced Typing Indicator */}
-                    <div className="relative">
+                    {/* Typing Indicator */}
+                    <div className="flex-1 min-w-0">
                       <div className="flex items-center mb-1">
-                        <span className="text-sm font-semibold text-gray-300">AI Assistant</span>
+                        <span className="text-sm font-semibold text-gray-200">ChatGPT</span>
                         <span className="text-xs text-gray-500 ml-2">typing...</span>
                       </div>
                       
-                      <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50 rounded-2xl px-6 py-4 shadow-lg">
+                      <div className="text-gray-100">
                         <div className="flex items-center space-x-2">
                           <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                            <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                           </div>
-                          <span className="text-sm text-gray-400 ml-2">AI is thinking...</span>
+                          <span className="text-sm text-gray-400 ml-2">Thinking...</span>
                         </div>
                       </div>
-
-                      {/* Message Tail */}
-                      <div className="absolute top-9 left-[-6px] border-r-gray-800 w-3 h-3 border-r-8 border-t-4 border-b-4 border-t-transparent border-b-transparent"></div>
                     </div>
                   </div>
                 </div>
