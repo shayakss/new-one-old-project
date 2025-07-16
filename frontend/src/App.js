@@ -1724,10 +1724,10 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
               )}
               {loading && (
                 <div className="chatgpt-ai-message">
-                  <div className="max-w-4xl mx-auto px-4 py-4 flex items-start space-x-4">
+                  <div className="max-w-4xl mx-auto px-2 sm:px-4 py-2 sm:py-4 flex items-start space-x-2 sm:space-x-4">
                     {/* AI Avatar */}
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-green-500 flex items-center justify-center">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white animate-pulse" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
@@ -1735,7 +1735,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                     {/* Typing Indicator */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center mb-1">
-                        <span className="text-sm font-semibold text-gray-200">Baloch AI</span>
+                        <span className="text-xs sm:text-sm font-semibold text-gray-200">Baloch AI</span>
                         <span className="text-xs text-gray-500 ml-2">typing...</span>
                       </div>
                       
@@ -1746,7 +1746,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                             <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
                             <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                           </div>
-                          <span className="text-sm text-gray-400 ml-2">Thinking...</span>
+                          <span className="text-xs sm:text-sm text-gray-400 ml-2">Thinking...</span>
                         </div>
                       </div>
                     </div>
