@@ -1599,93 +1599,74 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                 </div>
               ) : (
                 messages.map((message, index) => (
-                  <div key={message.id || index} className="message-bubble-container">
-                    <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} mb-6`}>
-                      <div className={`flex items-start space-x-3 max-w-4xl ${message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
-                        {/* Enhanced Avatar */}
-                        <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-lg ${
-                          message.role === 'user' 
-                            ? 'bg-gradient-to-br from-emerald-500 to-green-600' 
-                            : message.role === 'system'
-                            ? 'bg-gradient-to-br from-blue-500 to-indigo-600'
-                            : 'bg-gradient-to-br from-purple-500 to-violet-600'
-                        }`}>
-                          {message.role === 'user' ? (
-                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                            </svg>
-                          ) : message.role === 'system' ? (
-                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
-                            </svg>
+                  <div key={message.id || index} className={`chatgpt-message-container ${
+                    message.role === 'user' ? 'chatgpt-user-message' : 'chatgpt-ai-message'
+                  }`}>
+                    <div className="max-w-4xl mx-auto px-4 py-4 flex items-start space-x-4">
+                      {/* Simple Avatar */}
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                        message.role === 'user' 
+                          ? 'bg-blue-500' 
+                          : message.role === 'system'
+                          ? 'bg-orange-500'
+                          : 'bg-green-500'
+                      }`}>
+                        {message.role === 'user' ? (
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                          </svg>
+                        ) : message.role === 'system' ? (
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
+                          </svg>
+                        ) : (
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        )}
+                      </div>
+
+                      {/* Message Content */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center mb-1">
+                          <span className="text-sm font-semibold text-gray-200">
+                            {message.role === 'user' ? 'You' : message.role === 'system' ? 'System' : 'ChatGPT'}
+                          </span>
+                          <span className="text-xs text-gray-500 ml-2">
+                            {message.timestamp ? new Date(message.timestamp).toLocaleTimeString() : ''}
+                          </span>
+                        </div>
+                        
+                        <div className="text-gray-100 text-base leading-relaxed">
+                          {containsMarkdown(message.content) ? (
+                            <div className="prose prose-invert max-w-none">
+                              <MarkdownRenderer 
+                                content={message.content} 
+                                messageType={message.role}
+                              />
+                            </div>
                           ) : (
-                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                              <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-                            </svg>
+                            <div className="whitespace-pre-wrap">
+                              {message.content || ''}
+                            </div>
                           )}
                         </div>
-
-                        {/* Message Bubble */}
-                        <div className={`relative group ${message.role === 'user' ? 'text-right' : 'text-left'}`}>
-                          {/* Message Header */}
-                          <div className={`flex items-center mb-1 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                            <span className="text-sm font-semibold text-gray-300">
-                              {message.role === 'user' ? 'You' : message.role === 'system' ? 'System' : 'AI Assistant'}
-                            </span>
-                            <span className="text-xs text-gray-500 ml-2">
-                              {message.timestamp ? new Date(message.timestamp).toLocaleTimeString() : ''}
-                            </span>
-                          </div>
-                          
-                          {/* Enhanced Message Content */}
-                          <div className={`relative ${
-                            message.role === 'user' 
-                              ? 'bg-gradient-to-br from-emerald-600 to-green-700 text-white' 
-                              : 'bg-gradient-to-br from-gray-800 to-gray-900 text-gray-100 border border-gray-700/50'
-                          } rounded-2xl px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-200`}>
-                            {containsMarkdown(message.content) ? (
-                              <div className="prose prose-invert max-w-none">
-                                <MarkdownRenderer 
-                                  content={message.content} 
-                                  messageType={message.role}
-                                />
-                              </div>
-                            ) : (
-                              <div className="text-base leading-relaxed whitespace-pre-wrap">
-                                {message.content || ''}
-                              </div>
-                            )}
-                            
-                            {/* Message Actions */}
-                            <div className={`absolute top-2 ${message.role === 'user' ? 'left-2' : 'right-2'} 
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-200`}>
-                              <button
-                                onClick={() => {
-                                  navigator.clipboard.writeText(message.content);
-                                  // You could add a toast notification here
-                                }}
-                                className="w-6 h-6 bg-black/20 hover:bg-black/40 rounded-full flex items-center justify-center transition-colors"
-                                title="Copy message"
-                              >
-                                <svg className="w-3 h-3 text-white/70" fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-                                  <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
-                                </svg>
-                              </button>
-                            </div>
-
-                            {/* Message Tail */}
-                            <div className={`absolute top-4 ${
-                              message.role === 'user' 
-                                ? 'right-[-6px] border-l-emerald-600' 
-                                : 'left-[-6px] border-r-gray-800'
-                            } w-3 h-3 ${
-                              message.role === 'user' 
-                                ? 'border-l-8 border-t-4 border-b-4 border-t-transparent border-b-transparent' 
-                                : 'border-r-8 border-t-4 border-b-4 border-t-transparent border-b-transparent'
-                            }`}></div>
-                          </div>
+                        
+                        {/* Message Actions */}
+                        <div className="flex items-center mt-2 space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                          <button
+                            onClick={() => {
+                              navigator.clipboard.writeText(message.content);
+                              // You could add a toast notification here
+                            }}
+                            className="text-gray-400 hover:text-gray-200 p-1 rounded transition-colors"
+                            title="Copy message"
+                          >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                              <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+                            </svg>
+                          </button>
                         </div>
                       </div>
                     </div>
