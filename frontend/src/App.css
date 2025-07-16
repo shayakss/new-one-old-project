@@ -340,6 +340,53 @@ body {
   box-shadow: 2px 0 10px rgba(0, 255, 136, 0.2);
 }
 
+/* ChatGPT-style Message Layout */
+.chatgpt-message-container {
+  position: relative;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.chatgpt-message-container:hover {
+  background-color: rgba(55, 65, 81, 0.1);
+}
+
+.chatgpt-user-message {
+  background-color: rgba(55, 65, 81, 0.05);
+}
+
+.chatgpt-ai-message {
+  background-color: rgba(31, 41, 55, 0.05);
+}
+
+.chatgpt-message-container .group:hover .opacity-0 {
+  opacity: 1;
+}
+
+/* ChatGPT-style Input Container */
+.chatgpt-input-container {
+  position: sticky;
+  bottom: 0;
+  background: #1f2937;
+  border-top: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+/* Clean message entrance animation */
+.chatgpt-message-container {
+  animation: fadeSlideIn 0.3s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Enhanced Message Bubbles */
 .message-bubble-container {
   animation: messageSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
