@@ -1707,76 +1707,75 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Enhanced Message Input Area */}
-            <div className="message-input-container border-t border-green-400/20 p-6" style={{background: 'linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%)'}}>
-              <div className="flex items-end space-x-4">
-                <div className="flex-1 relative">
-                  <textarea
-                    value={inputMessage}
-                    onChange={(e) => setInputMessage(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder={getPlaceholder()}
-                    disabled={loading || (currentFeature !== 'general_ai' && currentFeature !== 'system_health' && !(currentSession?.document_filename || currentSession?.pdf_filename))}
-                    className="w-full bg-gray-800/70 backdrop-blur-sm border border-gray-600/50 rounded-2xl px-4 py-4 text-white placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-green-400/50 focus:border-green-400/50 disabled:opacity-50 transition-all duration-200 shadow-lg"
-                    rows={inputMessage.split('\n').length || 1}
-                    style={{minHeight: '56px', maxHeight: '120px'}}
-                  />
-                  {recognitionRef.current && (currentFeature === 'chat' || currentFeature === 'general_ai') && (
-                    <button
-                      onClick={isListening ? stopListening : startListening}
-                      className={`absolute right-4 bottom-4 w-10 h-10 rounded-xl flex items-center justify-center font-medium transition-all duration-200 shadow-lg ${
-                        isListening 
-                          ? 'bg-red-500/20 text-red-400 border border-red-500/30 hover:bg-red-500/30' 
-                          : 'bg-green-400/10 text-green-400 border border-green-400/30 hover:bg-green-400/20 hover:scale-105'
-                      }`}
-                      disabled={loading}
-                    >
-                      {isListening ? (
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z" clipRule="evenodd" />
-                        </svg>
-                      ) : (
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
-                        </svg>
-                      )}
-                    </button>
-                  )}
-                </div>
-                <button
-                  onClick={sendMessage}
-                  disabled={!inputMessage.trim() || loading || (currentFeature !== 'general_ai' && currentFeature !== 'system_health' && !currentSession?.pdf_filename) || currentFeature === 'system_health'}
-                  className="send-button flex items-center justify-center w-14 h-14 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-2xl font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-                >
-                  {loading ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                  ) : (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                  )}
-                </button>
-              </div>
-              
-              {/* Quick Actions */}
-              <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700/30">
-                <div className="flex items-center space-x-2 text-xs text-gray-400">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                  </svg>
-                  <span>Press Enter to send, Shift+Enter for new line</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  {currentSession?.pdf_filename && (
-                    <div className="flex items-center space-x-1 text-xs text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
-                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
+            {/* ChatGPT-style Message Input Area */}
+            <div className="chatgpt-input-container border-t border-gray-700/50 bg-gray-800">
+              <div className="max-w-4xl mx-auto px-4 py-4">
+                <div className="flex items-end space-x-3">
+                  <div className="flex-1 relative">
+                    <textarea
+                      value={inputMessage}
+                      onChange={(e) => setInputMessage(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder={getPlaceholder()}
+                      disabled={loading || (currentFeature !== 'general_ai' && currentFeature !== 'system_health' && !(currentSession?.document_filename || currentSession?.pdf_filename))}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                      rows={inputMessage.split('\n').length || 1}
+                      style={{minHeight: '48px', maxHeight: '120px'}}
+                    />
+                    {recognitionRef.current && (currentFeature === 'chat' || currentFeature === 'general_ai') && (
+                      <button
+                        onClick={isListening ? stopListening : startListening}
+                        className={`absolute right-3 bottom-3 w-8 h-8 rounded-md flex items-center justify-center transition-all duration-200 ${
+                          isListening 
+                            ? 'bg-red-500 text-white hover:bg-red-600' 
+                            : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                        }`}
+                        disabled={loading}
+                      >
+                        {isListening ? (
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z" clipRule="evenodd" />
+                          </svg>
+                        ) : (
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                      </button>
+                    )}
+                  </div>
+                  <button
+                    onClick={sendMessage}
+                    disabled={!inputMessage.trim() || loading || (currentFeature !== 'general_ai' && currentFeature !== 'system_health' && !currentSession?.pdf_filename) || currentFeature === 'system_health'}
+                    className="flex items-center justify-center w-12 h-12 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-200"
+                  >
+                    {loading ? (
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    ) : (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                       </svg>
-                      <span>PDF Loaded</span>
+                    )}
+                  </button>
+                </div>
+                
+                {/* Status indicators */}
+                <div className="flex items-center justify-between mt-3">
+                  <div className="flex items-center space-x-2 text-xs text-gray-400">
+                    <span>Press Enter to send, Shift+Enter for new line</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    {currentSession?.pdf_filename && (
+                      <div className="flex items-center space-x-1 text-xs text-blue-400 bg-blue-400/10 px-2 py-1 rounded">
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
+                        </svg>
+                        <span>PDF Loaded</span>
+                      </div>
+                    )}
+                    <div className="text-xs text-gray-500">
+                      Model: {models.find(m => m.value === selectedModel)?.name || selectedModel}
                     </div>
-                  )}
-                  <div className="text-xs text-gray-500">
-                    Model: {models.find(m => m.value === selectedModel)?.name || selectedModel}
                   </div>
                 </div>
               </div>
