@@ -1675,14 +1675,28 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                         <div className="text-gray-100 text-base leading-relaxed">
                           {containsMarkdown(message.content) ? (
                             <div className="prose prose-invert max-w-none">
-                              <MarkdownRenderer 
-                                content={message.content} 
-                                messageType={message.role}
-                              />
+                              {message.role === 'assistant' ? (
+                                <TypewriterText 
+                                  text={message.content} 
+                                  speed={30}
+                                />
+                              ) : (
+                                <MarkdownRenderer 
+                                  content={message.content} 
+                                  messageType={message.role}
+                                />
+                              )}
                             </div>
                           ) : (
                             <div className="whitespace-pre-wrap">
-                              {message.content || ''}
+                              {message.role === 'assistant' ? (
+                                <TypewriterText 
+                                  text={message.content || ''} 
+                                  speed={30}
+                                />
+                              ) : (
+                                message.content || ''
+                              )}
                             </div>
                           )}
                         </div>
