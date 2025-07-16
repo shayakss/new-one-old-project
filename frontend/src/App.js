@@ -585,6 +585,11 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
       setSessions(response.data);
       if (response.data.length === 0) {
         await createNewSession();
+      } else {
+        // Automatically select the first session if none is currently selected
+        if (!currentSession) {
+          setCurrentSession(response.data[0]);
+        }
       }
       NotificationManager.showSuccess('Sessions loaded successfully');
     } catch (error) {
