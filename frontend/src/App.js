@@ -1599,7 +1599,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                 </div>
               ) : (
                 messages.map((message, index) => (
-                  <div key={message.id || index} className={`chatgpt-message-container ${
+                  <div key={message.id || index} className={`chatgpt-message-container group ${
                     message.role === 'user' ? 'chatgpt-user-message' : 'chatgpt-ai-message'
                   }`}>
                     <div className="max-w-4xl mx-auto px-4 py-4 flex items-start space-x-4">
