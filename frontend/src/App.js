@@ -1647,11 +1647,11 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                           : 'bg-green-500'
                       }`}>
                         {message.role === 'user' ? (
-                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                           </svg>
                         ) : message.role === 'system' ? (
-                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
                           </svg>
                         ) : (
