@@ -1637,9 +1637,9 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                   <div key={message.id || index} className={`chatgpt-message-container group ${
                     message.role === 'user' ? 'chatgpt-user-message' : 'chatgpt-ai-message'
                   }`}>
-                    <div className="max-w-4xl mx-auto px-4 py-4 flex items-start space-x-4">
+                    <div className="max-w-4xl mx-auto px-2 sm:px-4 py-2 sm:py-4 flex items-start space-x-2 sm:space-x-4">
                       {/* Simple Avatar */}
-                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                      <div className={`flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${
                         message.role === 'user' 
                           ? 'bg-blue-500' 
                           : message.role === 'system'
