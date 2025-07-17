@@ -518,26 +518,36 @@ const HomePage = ({ setCurrentView }) => {
           </div>
 
           {/* Stats Section */}
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 max-w-4xl mx-auto mb-20 transition-all duration-300">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">7+</div>
-                <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">AI Models</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">100%</div>
-                <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Free to Use</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">∞</div>
-                <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Document Uploads</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">24/7</div>
-                <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Available</div>
+          <AnimatedSection animationType="scaleIn" delay={1000}>
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 max-w-4xl mx-auto mb-20 transition-all duration-300 hover-lift">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">
+                    <CountUp end={7} duration={2000} delay={1200} />+
+                  </div>
+                  <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">AI Models</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">
+                    <CountUp end={100} duration={2000} delay={1400} />%
+                  </div>
+                  <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Free to Use</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">
+                    <CountUp end={Infinity} duration={2000} delay={1600} />
+                  </div>
+                  <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Document Uploads</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">
+                    <CountUp end={24} duration={2000} delay={1800} />/7
+                  </div>
+                  <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Available</div>
+                </div>
               </div>
             </div>
-          </div>
+          </AnimatedSection>
 
 
         </div>
