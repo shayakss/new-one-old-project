@@ -171,7 +171,35 @@ class ChatPDFTester:
             self.log_test("Document Upload", False, "No test session available")
             return
         
-        # Create a simple test PDF content
+        # Create a simple test text file first (easier to extract content)
+        test_text_content = b"This is a test document for ChatPDF backend testing. It contains sample text that should be extracted and used for AI chat functionality. The document discusses various topics including artificial intelligence, document processing, and automated testing procedures."
+        
+        # Test universal document upload endpoint with TXT file
+        try:
+            data = aiohttp.FormData()
+            data.add_field('file', test_text_content, 
+                          filename='test_document.txt', 
+                          content_type='text/plain')
+            
+            async with self.session.post(
+                f"{API_BASE_URL}/sessions/{self.test_session_id}/upload-document",
+                data=data
+            ) as response:
+                if response.status == 200:
+                    result = await response.json()
+                    filename = result.get('filename', 'unknown')
+                    file_type = result.get('file_type', 'unknown')
+                    content_length = result.get('content_length', 0)
+                    self.log_test("Universal Document Upload", True, 
+                                f"Uploaded {filename} ({file_type}), {content_length} chars extracted")
+                else:
+                    response_text = await response.text()
+                    self.log_test("Universal Document Upload", False, 
+                                f"HTTP {response.status}: {response_text}")
+        except Exception as e:
+            self.log_test("Universal Document Upload", False, f"Exception: {str(e)}")
+        
+        # Create a simple test PDF content with actual text
         test_pdf_content = b"""%PDF-1.4
 1 0 obj
 <<
@@ -194,62 +222,53 @@ endobj
 /Parent 2 0 R
 /MediaBox [0 0 612 792]
 /Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
 >>
 endobj
 
 4 0 obj
 <<
-/Length 44
+/Length 120
 >>
 stream
 BT
 /F1 12 Tf
 72 720 Td
-(Test PDF for ChatPDF Backend Testing) Tj
+(This is a test PDF document for ChatPDF backend testing.) Tj
+0 -20 Td
+(It contains sample content for AI processing.) Tj
 ET
 endstream
 endobj
 
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
 xref
-0 5
+0 6
 0000000000 65535 f 
 0000000010 00000 n 
 0000000053 00000 n 
 0000000125 00000 n 
-0000000185 00000 n 
+0000000279 00000 n 
+0000000449 00000 n 
 trailer
 <<
-/Size 5
+/Size 6
 /Root 1 0 R
 >>
 startxref
-279
+528
 %%EOF"""
-        
-        # Test universal document upload endpoint
-        try:
-            data = aiohttp.FormData()
-            data.add_field('file', test_pdf_content, 
-                          filename='test_document.pdf', 
-                          content_type='application/pdf')
-            
-            async with self.session.post(
-                f"{API_BASE_URL}/sessions/{self.test_session_id}/upload-document",
-                data=data
-            ) as response:
-                if response.status == 200:
-                    result = await response.json()
-                    filename = result.get('filename', 'unknown')
-                    file_type = result.get('file_type', 'unknown')
-                    content_length = result.get('content_length', 0)
-                    self.log_test("Universal Document Upload", True, 
-                                f"Uploaded {filename} ({file_type}), {content_length} chars extracted")
-                else:
-                    response_text = await response.text()
-                    self.log_test("Universal Document Upload", False, 
-                                f"HTTP {response.status}: {response_text}")
-        except Exception as e:
-            self.log_test("Universal Document Upload", False, f"Exception: {str(e)}")
         
         # Test legacy PDF upload endpoint for backward compatibility
         try:
@@ -264,10 +283,13 @@ startxref
             ) as response:
                 if response.status == 200:
                     result = await response.json()
+                    content_length = result.get('content_length', 0)
                     self.log_test("Legacy PDF Upload", True, 
-                                f"Backward compatibility working")
+                                f"Backward compatibility working, {content_length} chars extracted")
                 else:
-                    self.log_test("Legacy PDF Upload", False, f"HTTP {response.status}")
+                    response_text = await response.text()
+                    self.log_test("Legacy PDF Upload", False, 
+                                f"HTTP {response.status}: {response_text}")
         except Exception as e:
             self.log_test("Legacy PDF Upload", False, f"Exception: {str(e)}")
     
