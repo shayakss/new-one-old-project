@@ -583,29 +583,34 @@ const HomePage = ({ setCurrentView }) => {
 
 const FeatureCard = ({ icon, title, description, gradient }) => {
   return (
-    <div className="group relative overflow-hidden">
+    <div className="group relative overflow-hidden hover-lift">
       {/* Background gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl`}></div>
+      <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl`}></div>
       
       {/* Card content */}
-      <div className="relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 hover:border-white/30 transition-all duration-300 group-hover:transform group-hover:scale-105 shadow-xl">
-        <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${gradient} rounded-xl mb-6 text-white shadow-lg`}>
+      <div className="relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 hover:border-white/30 transition-all duration-500 shadow-xl feature-card-enhanced">
+        <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${gradient} rounded-xl mb-6 text-white shadow-lg group-hover:scale-110 transition-transform duration-500`}>
           {icon}
         </div>
         
-        <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-purple-400 group-hover:to-emerald-400 transition-all duration-300 drop-shadow-lg">
+        <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-purple-400 group-hover:to-emerald-400 transition-all duration-500 drop-shadow-lg">
           {title}
         </h3>
         
-        <p className="text-white/90 leading-relaxed group-hover:text-white transition-colors duration-300 drop-shadow-md">
+        <p className="text-white/90 leading-relaxed group-hover:text-white transition-colors duration-500 drop-shadow-md">
           {description}
         </p>
         
         {/* Hover effect arrow */}
-        <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-x-1">
           <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>
+        </div>
+        
+        {/* Shimmer effect on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="shimmer absolute inset-0 rounded-2xl"></div>
         </div>
       </div>
     </div>
