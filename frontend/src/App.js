@@ -463,22 +463,22 @@ const FeatureCard = ({ icon, title, description, gradient }) => {
       <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}></div>
       
       {/* Card content */}
-      <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 group-hover:transform group-hover:scale-105">
+      <div className="relative bg-gray-100/50 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl p-8 hover:border-gray-300 dark:hover:border-white/20 transition-all duration-300 group-hover:transform group-hover:scale-105">
         <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${gradient} rounded-xl mb-6 text-white shadow-lg`}>
           {icon}
         </div>
         
-        <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-purple-400 group-hover:to-emerald-400 transition-all duration-300">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-purple-400 group-hover:to-emerald-400 transition-all duration-300">
           {title}
         </h3>
         
-        <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+        <p className="text-gray-600 dark:text-gray-400 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
           {description}
         </p>
         
         {/* Hover effect arrow */}
         <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-5 h-5 text-gray-900 dark:text-white" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>
         </div>
