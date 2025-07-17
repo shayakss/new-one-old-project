@@ -31,3 +31,4 @@ distro
 lxml==6.0.0
 et-xmlfile==2.0.0
 litellm
+openai
