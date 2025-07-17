@@ -7,9 +7,8 @@ const VideoBackground = () => {
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef(null);
 
-  const videoSources = [
-    `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001'}/video/5453622-uhd_3840_2160_24fps.mp4`
-  ];
+  // Use the local video file
+  const videoSrc = "/5453622-uhd_3840_2160_24fps.mp4";
 
   useEffect(() => {
     const video = videoRef.current;
@@ -20,10 +19,6 @@ const VideoBackground = () => {
           console.log('Video is playing');
         } catch (error) {
           console.error('Error playing video:', error);
-          // If autoplay fails, try to set up a user interaction handler
-          if (error.name === 'NotAllowedError') {
-            console.log('Autoplay blocked, video will play on user interaction');
-          }
         }
       };
       
@@ -53,7 +48,7 @@ const VideoBackground = () => {
         console.log('Video loading timeout, showing fallback');
         setVideoError(true);
       }
-    }, 10000); // 10 seconds timeout
+    }, 15000); // 15 seconds timeout
 
     return () => clearTimeout(timeout);
   }, [videoLoaded, videoError]);
