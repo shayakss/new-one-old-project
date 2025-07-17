@@ -75,7 +75,7 @@ const VideoBackground = () => {
         onLoadStart={() => console.log('Video loading started')}
         onCanPlay={() => console.log('Video can play')}
         onCanPlayThrough={() => console.log('Video can play through')}
-        src="/5453622-uhd_3840_2160_24fps.mp4"
+        src={`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001'}/video/5453622-uhd_3840_2160_24fps.mp4`}
         poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMUYyOTM3Ii8+CjxwYXRoIGQ9Ik0wIDBoMTAwdjEwMEgweiIgZmlsbD0iIzFGMjkzNyIvPgo8L3N2Zz4="
       />
       
