@@ -4,6 +4,8 @@ import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import { classifyError, handleErrorWithRetry, NotificationManager, ConnectionChecker } from './utils/errorHandling';
 import NotificationContainer from './components/NotificationContainer';
+import { ThemeProvider } from './contexts/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
 
 // Professional Typewriter Effect Component
 const TypewriterText = ({ text, speed = 15, onComplete }) => {
