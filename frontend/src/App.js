@@ -382,7 +382,7 @@ const HomePage = ({ setCurrentView }) => {
             
             <AnimatedSection animationType="fadeInUp" delay={300}>
               <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg transition-colors duration-300">
-                <TypewriterText text="Transform Your" speed={100} />
+                Transform Your
                 <span className="bg-gradient-to-r from-purple-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent block drop-shadow-lg">
                   Documents into Conversations
                 </span>
