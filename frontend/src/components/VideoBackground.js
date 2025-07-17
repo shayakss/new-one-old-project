@@ -1,0 +1,66 @@
+import React, { useState, useEffect } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
+
+const VideoBackground = () => {
+  const { theme } = useTheme();
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+
+  const videoSources = [
+    "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-desert-26070-large.mp4",
+    "https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4",
+    "https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"
+  ];
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+    setVideoError(false);
+  };
+
+  const handleVideoError = () => {
+    setVideoError(true);
+    setVideoLoaded(false);
+  };
+
+  return (
+    <div className="absolute inset-0 w-full h-full overflow-hidden">
+      {/* Video Background */}
+      <video
+        className={`absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 object-cover transition-opacity duration-1000 ${
+          videoLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        autoPlay
+        muted
+        loop
+        playsInline
+        onLoadedData={handleVideoLoad}
+        onError={handleVideoError}
+        poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMUYyOTM3Ii8+CjxwYXRoIGQ9Ik0wIDBoMTAwdjEwMEgweiIgZmlsbD0iIzFGMjkzNyIvPgo8L3N2Zz4="
+      >
+        {videoSources.map((src, index) => (
+          <source key={index} src={src} type="video/mp4" />
+        ))}
+      </video>
+      
+      {/* Fallback Background - shows when video fails to load */}
+      {(videoError || !videoLoaded) && (
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 animate-pulse"></div>
+      )}
+      
+      {/* Video Overlay */}
+      <div className="absolute inset-0 bg-black/40 dark:bg-black/60 transition-all duration-300"></div>
+      
+      {/* Theme-specific overlay */}
+      <div className="absolute inset-0 bg-white/20 dark:bg-transparent transition-all duration-300"></div>
+      
+      {/* Loading indicator */}
+      {!videoLoaded && !videoError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default VideoBackground;
