@@ -242,30 +242,7 @@ const HomePage = ({ setCurrentView }) => {
   return (
     <div className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
       {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <video
-          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMUYyOTM3Ii8+CjxwYXRoIGQ9Ik0wIDBoMTAwdjEwMEgweiIgZmlsbD0iIzFGMjkzNyIvPgo8L3N2Zz4="
-        >
-          {/* Multiple video sources for better compatibility */}
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-desert-26070-large.mp4" type="video/mp4" />
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4" type="video/mp4" />
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4" />
-          
-          {/* Fallback gradient for browsers that don't support video */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-        </video>
-        
-        {/* Video Overlay */}
-        <div className="absolute inset-0 bg-black/40 dark:bg-black/60 transition-all duration-300"></div>
-        
-        {/* Theme-specific overlay */}
-        <div className="absolute inset-0 bg-white/20 dark:bg-transparent transition-all duration-300"></div>
-      </div>
+      <VideoBackground />
       
       {/* Floating orbs - only show in dark theme */}
       {theme === 'dark' && (
