@@ -5,10 +5,20 @@ const VideoBackground = () => {
   const { theme } = useTheme();
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef(null);
 
   const videoSources = [
     "/5453622-uhd_3840_2160_24fps.mp4"
   ];
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && videoLoaded) {
+      video.play().catch(error => {
+        console.error('Error playing video:', error);
+      });
+    }
+  }, [videoLoaded]);
 
   const handleVideoLoad = () => {
     console.log('Video loaded successfully');
