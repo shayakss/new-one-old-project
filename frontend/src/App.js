@@ -982,7 +982,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
 
   const uploadDocument = async (file) => {
     if (!currentSession) {
-      alert('Please create a session first');
+      NotificationManager.showWarning('Please create a session first');
       return;
     }
 
