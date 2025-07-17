@@ -331,19 +331,7 @@ body {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 255, 136, 0.15) 0%,
-    rgba(0, 204, 106, 0.1) 35%,
-    rgba(0, 255, 136, 0.05) 70%,
-    transparent 100%
-  );
-  filter: blur(40px);
-  z-index: -1;
-  border-radius: 24px;
+  }
 }
 
 .feature-card-enhanced {
