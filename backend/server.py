@@ -2197,3 +2197,22 @@ app.add_middleware(
 
 # Include API routes
 app.include_router(api_router)
+
+# Add video serving endpoint
+@app.get("/video/{filename}")
+async def serve_video(filename: str):
+    """Serve video files with proper headers for streaming"""
+    video_path = Path(__file__).parent / filename
+    if not video_path.exists():
+        raise HTTPException(status_code=404, detail="Video not found")
+    
+    # Return video file with appropriate headers
+    return FileResponse(
+        video_path,
+        media_type="video/mp4",
+        headers={
+            "Accept-Ranges": "bytes",
+            "Content-Type": "video/mp4",
+            "Cache-Control": "public, max-age=31536000",
+        }
+    )
