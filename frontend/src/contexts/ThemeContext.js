@@ -24,8 +24,15 @@ export const ThemeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // Apply theme to document root
+    // Apply theme to document root for both CSS variables and Tailwind classes
     document.documentElement.setAttribute('data-theme', theme);
+    
+    // Handle Tailwind's dark mode class
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, [theme]);
 
   const value = {
