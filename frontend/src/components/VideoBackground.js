@@ -44,7 +44,7 @@ const VideoBackground = () => {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         onLoadedData={handleVideoLoad}
         onError={handleVideoError}
         onLoadStart={() => console.log('Video loading started')}
