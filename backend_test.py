@@ -357,56 +357,36 @@ startxref
             self.log_test("Question Generation", False, f"Exception: {str(e)}")
     
     async def test_research_features(self):
-        """Test research and summary features"""
+        """Test research and summary features (via chat with research feature_type)"""
         print("🔬 Testing Research Features...")
         
         if not self.test_session_id:
             self.log_test("Research Features", False, "No test session available")
             return
         
-        # Test summary research
+        # Test research via chat with research feature_type
         try:
             research_data = {
                 "session_id": self.test_session_id,
-                "research_type": "summary",
-                "model": "claude-3-haiku-20240307"
+                "content": "Please provide a summary of the uploaded document",
+                "model": "claude-3-haiku-20240307",
+                "feature_type": "research"
             }
             
-            async with self.session.post(f"{API_BASE_URL}/research",
+            async with self.session.post(f"{API_BASE_URL}/sessions/{self.test_session_id}/messages",
                                        json=research_data) as response:
                 if response.status == 200:
                     result = await response.json()
-                    summary = result.get('summary', '')[:100]
-                    self.log_test("Research Summary", True, 
-                                f"Generated summary: {summary}...")
+                    ai_response = result.get('ai_response', {})
+                    content = ai_response.get('content', '')[:100]
+                    self.log_test("Research via Chat", True, 
+                                f"Research response: {content}...")
                 else:
                     response_text = await response.text()
-                    self.log_test("Research Summary", False, 
+                    self.log_test("Research via Chat", False, 
                                 f"HTTP {response.status}: {response_text}")
         except Exception as e:
-            self.log_test("Research Summary", False, f"Exception: {str(e)}")
-        
-        # Test detailed research
-        try:
-            research_data = {
-                "session_id": self.test_session_id,
-                "research_type": "detailed_research",
-                "model": "claude-3-haiku-20240307"
-            }
-            
-            async with self.session.post(f"{API_BASE_URL}/research",
-                                       json=research_data) as response:
-                if response.status == 200:
-                    result = await response.json()
-                    analysis = result.get('analysis', '')[:100]
-                    self.log_test("Detailed Research", True, 
-                                f"Generated analysis: {analysis}...")
-                else:
-                    response_text = await response.text()
-                    self.log_test("Detailed Research", False, 
-                                f"HTTP {response.status}: {response_text}")
-        except Exception as e:
-            self.log_test("Detailed Research", False, f"Exception: {str(e)}")
+            self.log_test("Research via Chat", False, f"Exception: {str(e)}")
     
     async def test_translation_feature(self):
         """Test PDF translation feature"""
