@@ -340,31 +340,35 @@ const HomePage = ({ setCurrentView }) => {
       {/* Header */}
       <header className="relative z-20 px-6 py-8">
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
-              <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
-              </svg>
+          <AnimatedSection animationType="fadeInLeft" delay={100}>
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg animate-pulseGlow">
+                <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-white drop-shadow-lg transition-colors duration-300">Baloch AI PDF</h1>
+                <p className="text-sm text-gray-200 drop-shadow-md transition-colors duration-300">AI-Powered Document Assistant</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-white drop-shadow-lg transition-colors duration-300">Baloch AI PDF</h1>
-              <p className="text-sm text-gray-200 drop-shadow-md transition-colors duration-300">AI-Powered Document Assistant</p>
-            </div>
-          </div>
+          </AnimatedSection>
           
-          <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-6">
-              <a href="#features" className="text-white/90 hover:text-white transition-colors duration-300 drop-shadow-md">Features</a>
-              <a href="#how-it-works" className="text-white/90 hover:text-white transition-colors duration-300 drop-shadow-md">How it Works</a>
-              <button
-                onClick={() => setCurrentView('app')}
-                className="bg-gradient-to-r from-purple-500 to-emerald-500 text-white px-6 py-2 rounded-full hover:from-purple-600 hover:to-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                Get Started
-              </button>
+          <AnimatedSection animationType="fadeInRight" delay={200}>
+            <div className="flex items-center space-x-4">
+              <div className="hidden md:flex items-center space-x-6">
+                <a href="#features" className="text-white/90 hover:text-white transition-colors duration-300 drop-shadow-md">Features</a>
+                <a href="#how-it-works" className="text-white/90 hover:text-white transition-colors duration-300 drop-shadow-md">How it Works</a>
+                <button
+                  onClick={() => setCurrentView('app')}
+                  className="bg-gradient-to-r from-purple-500 to-emerald-500 text-white px-6 py-2 rounded-full hover:from-purple-600 hover:to-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover-lift"
+                >
+                  Get Started
+                </button>
+              </div>
+              <ThemeToggle />
             </div>
-            <ThemeToggle />
-          </div>
+          </AnimatedSection>
         </nav>
       </header>
 
