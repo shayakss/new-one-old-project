@@ -896,7 +896,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
         setShowFixConfirmation(null);
         NotificationManager.showSuccess(`Fix applied successfully: ${response.data.message}`);
       } else {
-        alert(`Fix failed: ${response.data.error}`);
+        NotificationManager.showError(`Fix failed: ${response.data.error}`);
       }
     } catch (error) {
       console.error('Error fixing issue:', error);
