@@ -709,7 +709,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
         } else if (event.error === 'no-speech') {
           NotificationManager.showWarning('No speech detected. Please try again.');
         } else {
-          alert('Speech recognition error: ' + event.error);
+          NotificationManager.showError('Speech recognition error: ' + event.error);
         }
       };
 
