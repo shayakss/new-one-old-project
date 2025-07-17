@@ -233,7 +233,7 @@ const App = () => {
   );
 };
 
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from './contexts/ThemeContext';
 
 const HomePage = ({ setCurrentView }) => {
   const { theme } = useTheme();
