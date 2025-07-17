@@ -1162,16 +1162,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* Modern grid background */
-.bg-grid-white\/\[0\.02\] {
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-}
 
-.bg-\[length\:50px_50px\] {
-  background-size: 50px 50px;
-}
 
 /* Enhanced animations */
 @keyframes float {
