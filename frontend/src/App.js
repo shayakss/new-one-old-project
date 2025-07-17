@@ -240,19 +240,39 @@ const HomePage = ({ setCurrentView }) => {
   
   return (
     <div className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
-      {/* Remove grid backgrounds - no more grid elements */}
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <video
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761" type="video/mp4" />
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-desert-26070-large.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Video Overlay */}
+        <div className="absolute inset-0 bg-black/40 dark:bg-black/60 transition-all duration-300"></div>
+        
+        {/* Theme-specific overlay */}
+        <div className="absolute inset-0 bg-white/20 dark:bg-transparent transition-all duration-300"></div>
+      </div>
       
       {/* Floating orbs - only show in dark theme */}
       {theme === 'dark' && (
         <>
-          <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse z-10"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000 z-10"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-500 z-10"></div>
         </>
       )}
 
       {/* Header */}
-      <header className="relative z-10 px-6 py-8">
+      <header className="relative z-20 px-6 py-8">
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
@@ -261,15 +281,15 @@ const HomePage = ({ setCurrentView }) => {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">Baloch AI PDF</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">AI-Powered Document Assistant</p>
+              <h1 className="text-2xl font-bold text-white drop-shadow-lg transition-colors duration-300">Baloch AI PDF</h1>
+              <p className="text-sm text-gray-200 drop-shadow-md transition-colors duration-300">AI-Powered Document Assistant</p>
             </div>
           </div>
           
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Features</a>
-              <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">How it Works</a>
+              <a href="#features" className="text-white/90 hover:text-white transition-colors duration-300 drop-shadow-md">Features</a>
+              <a href="#how-it-works" className="text-white/90 hover:text-white transition-colors duration-300 drop-shadow-md">How it Works</a>
               <button
                 onClick={() => setCurrentView('app')}
                 className="bg-gradient-to-r from-purple-500 to-emerald-500 text-white px-6 py-2 rounded-full hover:from-purple-600 hover:to-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
@@ -283,21 +303,21 @@ const HomePage = ({ setCurrentView }) => {
       </header>
 
       {/* Hero Section */}
-      <main className="relative z-10 px-6 pt-16 pb-32">
+      <main className="relative z-20 px-6 pt-16 pb-32">
         <div className="max-w-7xl mx-auto text-center">
           {/* Hero Content */}
           <div className="max-w-4xl mx-auto mb-16">
             <div className="mb-8">
             </div>
             
-            <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-8 leading-tight transition-colors duration-300">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg transition-colors duration-300">
               Transform Your
-              <span className="bg-gradient-to-r from-purple-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent block">
+              <span className="bg-gradient-to-r from-purple-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent block drop-shadow-lg">
                 Documents into Conversations
               </span>
             </h2>
             
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
+            <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md transition-colors duration-300">
               Upload any document (PDF, Word, Excel, PowerPoint, CSV, TXT) and engage in intelligent conversations with your content. 
               Get instant answers, generate summaries, and unlock insights with the power of AI.
             </p>
@@ -316,24 +336,24 @@ const HomePage = ({ setCurrentView }) => {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex items-center justify-center space-x-8 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+            <div className="flex items-center justify-center space-x-8 text-sm text-white/80 transition-colors duration-300">
               <div className="flex items-center space-x-2">
                 <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
-                <span>Free to Use</span>
+                <span className="drop-shadow-md">Free to Use</span>
               </div>
               <div className="flex items-center space-x-2">
                 <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                 </svg>
-                <span>Secure & Private</span>
+                <span className="drop-shadow-md">Secure & Private</span>
               </div>
               <div className="flex items-center space-x-2">
                 <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
-                <span>Unlimited PDFs</span>
+                <span className="drop-shadow-md">Unlimited PDFs</span>
               </div>
             </div>
           </div>
@@ -403,23 +423,23 @@ const HomePage = ({ setCurrentView }) => {
           </div>
 
           {/* Stats Section */}
-          <div className="bg-gray-100/50 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl p-8 max-w-4xl mx-auto mb-20 transition-all duration-300">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 max-w-4xl mx-auto mb-20 transition-all duration-300">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">7+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">AI Models</div>
+                <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">7+</div>
+                <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">AI Models</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">100%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Free to Use</div>
+                <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">100%</div>
+                <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Free to Use</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">∞</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Document Uploads</div>
+                <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">∞</div>
+                <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Document Uploads</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">24/7</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Available</div>
+                <div className="text-3xl font-bold text-white mb-2 drop-shadow-lg transition-colors duration-300">24/7</div>
+                <div className="text-sm text-white/80 drop-shadow-md transition-colors duration-300">Available</div>
               </div>
             </div>
           </div>
@@ -429,7 +449,7 @@ const HomePage = ({ setCurrentView }) => {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-gray-200 dark:border-white/10 bg-gray-50/20 dark:bg-black/20 backdrop-blur-sm transition-all duration-300">
+      <footer className="relative z-20 border-t border-white/20 bg-black/30 backdrop-blur-md transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-4 mb-4 md:mb-0">
@@ -438,14 +458,14 @@ const HomePage = ({ setCurrentView }) => {
                   <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
                 </svg>
               </div>
-              <span className="text-gray-900 dark:text-white font-semibold transition-colors duration-300">Baloch AI PDF</span>
+              <span className="text-white font-semibold drop-shadow-md transition-colors duration-300">Baloch AI PDF</span>
             </div>
             
             <div className="text-center md:text-right">
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-2 transition-colors duration-300">
-                Built with ❤️ by <span className="text-gray-900 dark:text-white font-medium transition-colors duration-300">Shayak Siraj & Ahmed</span>
+              <p className="text-white/80 text-sm mb-2 drop-shadow-md transition-colors duration-300">
+                Built with ❤️ by <span className="text-white font-medium transition-colors duration-300">Shayak Siraj & Ahmed</span>
               </p>
-              <p className="text-gray-500 dark:text-gray-500 text-xs transition-colors duration-300">
+              <p className="text-white/60 text-xs drop-shadow-md transition-colors duration-300">
                 AI-Powered Document Assistant
               </p>
             </div>
