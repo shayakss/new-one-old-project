@@ -13,10 +13,23 @@ const VideoBackground = () => {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video && videoLoaded) {
-      video.play().catch(error => {
-        console.error('Error playing video:', error);
-      });
+    if (video) {
+      const playVideo = async () => {
+        try {
+          await video.play();
+          console.log('Video is playing');
+        } catch (error) {
+          console.error('Error playing video:', error);
+          // If autoplay fails, try to set up a user interaction handler
+          if (error.name === 'NotAllowedError') {
+            console.log('Autoplay blocked, video will play on user interaction');
+          }
+        }
+      };
+      
+      if (videoLoaded) {
+        playVideo();
+      }
     }
   }, [videoLoaded]);
 
