@@ -32,7 +32,91 @@ const TypewriterText = ({ text, speed = 15, onComplete }) => {
     return () => clearInterval(timer);
   }, [text, speed, onComplete]);
 
-  return <span>{displayedText}</span>;
+  return <span>{displayedText}<span className="typewriter-cursor">|</span></span>;
+};
+
+// Animated Counter Component
+const CountUp = ({ end, duration = 2000, delay = 0 }) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timer = setTimeout(() => {
+      const increment = end / (duration / 16);
+      let current = 0;
+      const countTimer = setInterval(() => {
+        current += increment;
+        if (current >= end) {
+          setCount(end);
+          clearInterval(countTimer);
+        } else {
+          setCount(Math.floor(current));
+        }
+      }, 16);
+
+      return () => clearInterval(countTimer);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [isVisible, end, duration, delay]);
+
+  return (
+    <span ref={elementRef} className="animate-countUp">
+      {end === Infinity ? '∞' : count}
+    </span>
+  );
+};
+
+// Animated Section Component
+const AnimatedSection = ({ children, animationType = 'fadeInUp', delay = 0, className = '' }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const animationClass = isVisible ? `animate-${animationType}` : 'animate-hidden';
+  const delayClass = delay > 0 ? `animate-delay-${delay}` : '';
+
+  return (
+    <div ref={elementRef} className={`${animationClass} ${delayClass} ${className}`}>
+      {children}
+    </div>
+  );
 };
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
