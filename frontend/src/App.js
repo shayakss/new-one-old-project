@@ -705,7 +705,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
         console.error('Speech recognition error:', event.error);
         setIsListening(false);
         if (event.error === 'not-allowed') {
-          alert('Microphone access denied. Please allow microphone access to use voice input.');
+          NotificationManager.showError('Microphone access denied. Please allow microphone access to use voice input.');
         } else if (event.error === 'no-speech') {
           alert('No speech detected. Please try again.');
         } else {
