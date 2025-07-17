@@ -569,10 +569,10 @@ const HomePage = ({ setCurrentView }) => {
               
               <div className="text-center md:text-right">
                 <p className="text-white/80 text-sm mb-2 drop-shadow-md transition-colors duration-300">
-                  Built with ❤️ by <span className="text-white font-medium transition-colors duration-300">Shayak Siraj & Ahmed</span>
+                  Developed by <span className="text-white font-medium transition-colors duration-300">SHAYAK SIRAJ and AHMED ALI</span>
                 </p>
                 <p className="text-white/60 text-xs drop-shadow-md transition-colors duration-300">
-                  AI-Powered Document Assistant
+                  university of Balochistan Sub Campus kharan
                 </p>
               </div>
             </div>
