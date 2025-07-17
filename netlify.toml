@@ -1,8 +1,0 @@
-# Build settings
-[build]
-  base = "frontend/"
-  publish = "frontend/build/"
-  command = "yarn build"
-
-# Environment variables will be set in Netlify dashboard
-# REACT_APP_BACKEND_URL will point to your Railway backend URL
