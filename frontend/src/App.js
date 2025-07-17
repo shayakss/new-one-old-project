@@ -215,19 +215,21 @@ const App = () => {
   const [currentFeature, setCurrentFeature] = useState('chat');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-green-900">
-      {/* Global Notification Container */}
-      <NotificationContainer />
-      
-      {currentView === 'home' && <HomePage setCurrentView={setCurrentView} />}
-      {currentView === 'app' && (
-        <ChatInterface 
-          currentFeature={currentFeature} 
-          setCurrentFeature={setCurrentFeature}
-          setCurrentView={setCurrentView}
-        />
-      )}
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-green-900 transition-colors duration-300">
+        {/* Global Notification Container */}
+        <NotificationContainer />
+        
+        {currentView === 'home' && <HomePage setCurrentView={setCurrentView} />}
+        {currentView === 'app' && (
+          <ChatInterface 
+            currentFeature={currentFeature} 
+            setCurrentFeature={setCurrentFeature}
+            setCurrentView={setCurrentView}
+          />
+        )}
+      </div>
+    </ThemeProvider>
   );
 };
 
