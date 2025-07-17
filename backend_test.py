@@ -451,12 +451,17 @@ startxref
             self.log_test("Export Functionality", False, "No test session available")
             return
         
-        # Test different export formats
+        # Test different export formats using POST endpoint
         for export_format in ["txt", "pdf", "docx"]:
             try:
-                async with self.session.get(
-                    f"{API_BASE_URL}/export/{self.test_session_id}?format={export_format}"
-                ) as response:
+                export_data = {
+                    "session_id": self.test_session_id,
+                    "export_format": export_format,
+                    "include_messages": True
+                }
+                
+                async with self.session.post(f"{API_BASE_URL}/export",
+                                           json=export_data) as response:
                     if response.status == 200:
                         content_type = response.headers.get('content-type', '')
                         self.log_test(f"Export {export_format.upper()}", True, 
