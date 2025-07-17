@@ -6,6 +6,7 @@ import { classifyError, handleErrorWithRetry, NotificationManager, ConnectionChe
 import NotificationContainer from './components/NotificationContainer';
 import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
+import VideoBackground from './components/VideoBackground';
 
 // Professional Typewriter Effect Component
 const TypewriterText = ({ text, speed = 15, onComplete }) => {
