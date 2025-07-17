@@ -1,4 +1,0 @@
-This is a sample text file that will be converted to PDF for testing.
-It contains some text that can be extracted and used for testing the PDF extraction functionality.
-The ChatPDF application should be able to extract this text and use it for AI responses.
-This is a test document for the ChatPDF application.
