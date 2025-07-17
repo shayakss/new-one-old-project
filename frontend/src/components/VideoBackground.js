@@ -36,6 +36,7 @@ const VideoBackground = () => {
     <div className="absolute inset-0 w-full h-full overflow-hidden">
       {/* Video Background */}
       <video
+        ref={videoRef}
         className={`absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 object-cover transition-opacity duration-1000 ${
           videoLoaded ? 'opacity-100' : 'opacity-0'
         }`}
