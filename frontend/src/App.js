@@ -380,52 +380,60 @@ const HomePage = ({ setCurrentView }) => {
             <div className="mb-8">
             </div>
             
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg transition-colors duration-300">
-              Transform Your
-              <span className="bg-gradient-to-r from-purple-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent block drop-shadow-lg">
-                Documents into Conversations
-              </span>
-            </h2>
+            <AnimatedSection animationType="fadeInUp" delay={300}>
+              <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg transition-colors duration-300">
+                <TypewriterText text="Transform Your" speed={100} />
+                <span className="bg-gradient-to-r from-purple-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent block drop-shadow-lg">
+                  Documents into Conversations
+                </span>
+              </h2>
+            </AnimatedSection>
             
-            <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md transition-colors duration-300">
-              Upload any document (PDF, Word, Excel, PowerPoint, CSV, TXT) and engage in intelligent conversations with your content. 
-              Get instant answers, generate summaries, and unlock insights with the power of AI.
-            </p>
+            <AnimatedSection animationType="fadeInUp" delay={600}>
+              <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md transition-colors duration-300">
+                Upload any document (PDF, Word, Excel, PowerPoint, CSV, TXT) and engage in intelligent conversations with your content. 
+                Get instant answers, generate summaries, and unlock insights with the power of AI.
+              </p>
+            </AnimatedSection>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <button
-                onClick={() => setCurrentView('app')}
-                className="bg-gradient-to-r from-purple-500 to-emerald-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-purple-600 hover:to-emerald-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center space-x-2"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                </svg>
-                <span>Start Chatting Now</span>
-              </button>
-            </div>
+            <AnimatedSection animationType="scaleIn" delay={900}>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <button
+                  onClick={() => setCurrentView('app')}
+                  className="bg-gradient-to-r from-purple-500 to-emerald-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-purple-600 hover:to-emerald-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center space-x-2 hover-lift animate-pulseGlow"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                  </svg>
+                  <span>Start Chatting Now</span>
+                </button>
+              </div>
+            </AnimatedSection>
 
             {/* Trust Indicators */}
-            <div className="flex items-center justify-center space-x-8 text-sm text-white/80 transition-colors duration-300">
-              <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                <span className="drop-shadow-md">Free to Use</span>
+            <AnimatedSection animationType="fadeInUp" delay={1200}>
+              <div className="flex items-center justify-center space-x-8 text-sm text-white/80 transition-colors duration-300">
+                <div className="flex items-center space-x-2">
+                  <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="drop-shadow-md">Free to Use</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="drop-shadow-md">Secure & Private</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                  <span className="drop-shadow-md">Unlimited PDFs</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                </svg>
-                <span className="drop-shadow-md">Secure & Private</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-                <span className="drop-shadow-md">Unlimited PDFs</span>
-              </div>
-            </div>
+            </AnimatedSection>
           </div>
 
           {/* Feature Cards Grid */}
