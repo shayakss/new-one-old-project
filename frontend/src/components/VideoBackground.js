@@ -41,9 +41,22 @@ const VideoBackground = () => {
 
   const handleVideoError = (e) => {
     console.error('Video error:', e);
+    console.error('Video error details:', e.target.error);
     setVideoError(true);
     setVideoLoaded(false);
   };
+
+  // Add a timeout for video loading
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!videoLoaded && !videoError) {
+        console.log('Video loading timeout, showing fallback');
+        setVideoError(true);
+      }
+    }, 10000); // 10 seconds timeout
+
+    return () => clearTimeout(timeout);
+  }, [videoLoaded, videoError]);
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
