@@ -8,7 +8,7 @@ const VideoBackground = () => {
   const videoRef = useRef(null);
 
   const videoSources = [
-    "/5453622-uhd_3840_2160_24fps.mp4"
+    `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001'}/video/5453622-uhd_3840_2160_24fps.mp4`
   ];
 
   useEffect(() => {
