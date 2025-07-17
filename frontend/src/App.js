@@ -894,7 +894,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
         // Refresh health data
         await loadSystemHealth();
         setShowFixConfirmation(null);
-        alert(`Fix applied successfully: ${response.data.message}`);
+        NotificationManager.showSuccess(`Fix applied successfully: ${response.data.message}`);
       } else {
         alert(`Fix failed: ${response.data.error}`);
       }
