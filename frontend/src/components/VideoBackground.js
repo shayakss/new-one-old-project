@@ -7,9 +7,7 @@ const VideoBackground = () => {
   const [videoError, setVideoError] = useState(false);
 
   const videoSources = [
-    "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-desert-26070-large.mp4",
-    "https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4",
-    "https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"
+    "/5453622-uhd_3840_2160_24fps.mp4"
   ];
 
   const handleVideoLoad = () => {
