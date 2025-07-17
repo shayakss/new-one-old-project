@@ -900,7 +900,7 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
       }
     } catch (error) {
       console.error('Error fixing issue:', error);
-      alert('Error applying fix: ' + (error.response?.data?.detail || error.message));
+      NotificationManager.showError('Error applying fix: ' + (error.response?.data?.detail || error.message));
     } finally {
       setFixingIssue(false);
     }
