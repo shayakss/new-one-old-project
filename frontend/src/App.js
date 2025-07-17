@@ -556,25 +556,27 @@ const HomePage = ({ setCurrentView }) => {
       {/* Footer */}
       <footer className="relative z-20 border-t border-white/20 bg-black/30 backdrop-blur-md transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-4 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
-                </svg>
+          <AnimatedSection animationType="fadeInUp" delay={200}>
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="flex items-center space-x-4 mb-4 md:mb-0">
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-lg flex items-center justify-center animate-pulseGlow">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-white font-semibold drop-shadow-md transition-colors duration-300">Baloch AI PDF</span>
               </div>
-              <span className="text-white font-semibold drop-shadow-md transition-colors duration-300">Baloch AI PDF</span>
+              
+              <div className="text-center md:text-right">
+                <p className="text-white/80 text-sm mb-2 drop-shadow-md transition-colors duration-300">
+                  Built with ❤️ by <span className="text-white font-medium transition-colors duration-300">Shayak Siraj & Ahmed</span>
+                </p>
+                <p className="text-white/60 text-xs drop-shadow-md transition-colors duration-300">
+                  AI-Powered Document Assistant
+                </p>
+              </div>
             </div>
-            
-            <div className="text-center md:text-right">
-              <p className="text-white/80 text-sm mb-2 drop-shadow-md transition-colors duration-300">
-                Built with ❤️ by <span className="text-white font-medium transition-colors duration-300">Shayak Siraj & Ahmed</span>
-              </p>
-              <p className="text-white/60 text-xs drop-shadow-md transition-colors duration-300">
-                AI-Powered Document Assistant
-              </p>
-            </div>
-          </div>
+          </AnimatedSection>
         </div>
       </footer>
     </div>
