@@ -438,66 +438,83 @@ const HomePage = ({ setCurrentView }) => {
 
           {/* Feature Cards Grid */}
           <div id="features" className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
-            <FeatureCard
-              icon={
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
-                </svg>
-              }
-              title="AI Chat"
-              description="Have natural conversations with your documents. Ask questions and get instant, contextual answers."
-              gradient="from-purple-500 to-pink-500"
-            />
-            <FeatureCard
-              icon={
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H16a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L11.47 14H8.53l-.56 2.242a1 1 0 11-1.94-.485L6.47 14H4a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.53 8l-1 4h2.94l1-4H9.53z" clipRule="evenodd" />
-                </svg>
-              }
-              title="Question Generator"
-              description="Auto-generate FAQs, MCQs, and True/False questions from your documents. Segment by chapters for targeted learning."
-              gradient="from-emerald-500 to-cyan-500"
-            />
-            <FeatureCard
-              icon={
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                </svg>
-              }
-              title="Quiz Generator"
-              description="Generate daily revision quizzes or custom quizzes from your document library with adjustable difficulty levels."
-              gradient="from-blue-500 to-indigo-500"
-            />
-            <FeatureCard
-              icon={
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
-                </svg>
-              }
-              title="Voice Input"
-              description="Use natural voice commands to ask questions about your documents with speech recognition."
-              gradient="from-orange-500 to-red-500"
-            />
-            <FeatureCard
-              icon={
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-                </svg>
-              }
-              title="Advanced Search"
-              description="Search across all your documents and conversations with intelligent, context-aware results."
-              gradient="from-teal-500 to-green-500"
-            />
-            <FeatureCard
-              icon={
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                </svg>
-              }
-              title="Multi-Language Support"
-              description="Translate your PDFs and interact with content in multiple languages powered by AI."
-              gradient="from-violet-500 to-purple-500"
-            />
+            <AnimatedSection animationType="cardSlideIn" delay={300}>
+              <FeatureCard
+                icon={
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                  </svg>
+                }
+                title="AI Chat"
+                description="Have natural conversations with your documents. Ask questions and get instant, contextual answers."
+                gradient="from-purple-500 to-pink-500"
+              />
+            </AnimatedSection>
+            
+            <AnimatedSection animationType="cardSlideIn" delay={400}>
+              <FeatureCard
+                icon={
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H16a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L11.47 14H8.53l-.56 2.242a1 1 0 11-1.94-.485L6.47 14H4a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.53 8l-1 4h2.94l1-4H9.53z" clipRule="evenodd" />
+                  </svg>
+                }
+                title="Question Generator"
+                description="Auto-generate FAQs, MCQs, and True/False questions from your documents. Segment by chapters for targeted learning."
+                gradient="from-emerald-500 to-cyan-500"
+              />
+            </AnimatedSection>
+            
+            <AnimatedSection animationType="cardSlideIn" delay={500}>
+              <FeatureCard
+                icon={
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                  </svg>
+                }
+                title="Quiz Generator"
+                description="Generate daily revision quizzes or custom quizzes from your document library with adjustable difficulty levels."
+                gradient="from-blue-500 to-indigo-500"
+              />
+            </AnimatedSection>
+            
+            <AnimatedSection animationType="cardSlideIn" delay={600}>
+              <FeatureCard
+                icon={
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
+                  </svg>
+                }
+                title="Voice Input"
+                description="Use natural voice commands to ask questions about your documents with speech recognition."
+                gradient="from-orange-500 to-red-500"
+              />
+            </AnimatedSection>
+            
+            <AnimatedSection animationType="cardSlideIn" delay={700}>
+              <FeatureCard
+                icon={
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                  </svg>
+                }
+                title="Advanced Search"
+                description="Search across all your documents and conversations with intelligent, context-aware results."
+                gradient="from-teal-500 to-green-500"
+              />
+            </AnimatedSection>
+            
+            <AnimatedSection animationType="cardSlideIn" delay={800}>
+              <FeatureCard
+                icon={
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                  </svg>
+                }
+                title="Multi-Language Support"
+                description="Translate your PDFs and interact with content in multiple languages powered by AI."
+                gradient="from-violet-500 to-purple-500"
+              />
+            </AnimatedSection>
           </div>
 
           {/* Stats Section */}
