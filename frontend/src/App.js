@@ -349,7 +349,7 @@ const HomePage = ({ setCurrentView }) => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white drop-shadow-lg transition-colors duration-300">Baloch AI PDF</h1>
-                <p className="text-sm text-gray-200 drop-shadow-md transition-colors duration-300">university of Balochistan Sub Campus kharan</p>
+                <p className="text-sm text-gray-200 drop-shadow-md transition-colors duration-300">AI-Powered Document Assistant</p>
               </div>
             </div>
           </AnimatedSection>
