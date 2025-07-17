@@ -1649,6 +1649,39 @@ Content:
 {document_content[:4000]}...
 
 Please answer questions based on this document content. Be specific and reference the document when possible."""
+            elif request.feature_type == "research":
+                system_message = f"""You are an AI research assistant specialized in analyzing documents and providing detailed research insights. 
+
+Document: {document_filename} (Type: {document_type.upper()})
+Content:
+{document_content[:4000]}...
+
+Please provide detailed research analysis, insights, and findings based on this document content. Be thorough and analytical in your responses."""
+            elif request.feature_type == "general_ai":
+                system_message = f"""You are a helpful AI assistant. You have access to a document for reference if needed.
+
+Document: {document_filename} (Type: {document_type.upper()})
+Content:
+{document_content[:4000]}...
+
+You can reference this document when relevant to the conversation, but also answer general questions."""
+            elif request.feature_type == "qa_generation":
+                system_message = f"""You are an AI assistant specialized in generating questions and answers based on document content.
+
+Document: {document_filename} (Type: {document_type.upper()})
+Content:
+{document_content[:4000]}...
+
+Please generate relevant questions and provide detailed answers based on this document content."""
+            else:
+                # Default fallback for any other feature_type
+                system_message = f"""You are an AI assistant specialized in analyzing documents. 
+
+Document: {document_filename} (Type: {document_type.upper()})
+Content:
+{document_content[:4000]}...
+
+Please answer questions based on this document content. Be specific and reference the document when possible."""
             
             ai_messages.append({"role": "system", "content": system_message})
         else:
