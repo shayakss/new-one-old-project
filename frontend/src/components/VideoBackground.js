@@ -11,11 +11,13 @@ const VideoBackground = () => {
   ];
 
   const handleVideoLoad = () => {
+    console.log('Video loaded successfully');
     setVideoLoaded(true);
     setVideoError(false);
   };
 
-  const handleVideoError = () => {
+  const handleVideoError = (e) => {
+    console.error('Video error:', e);
     setVideoError(true);
     setVideoLoaded(false);
   };
