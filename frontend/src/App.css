@@ -2,6 +2,29 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* Theme Support - CSS Variables */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --border-primary: #334155;
+  --border-secondary: #475569;
+}
+
 /* Professional Typography System - Reset and Base */
 * {
   margin: 0;
@@ -16,10 +39,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000000;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv07';
   font-variation-settings: normal;
   line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Professional Typography Scale */
