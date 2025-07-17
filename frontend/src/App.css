@@ -316,6 +316,37 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Video background styles */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Ensure video covers the entire background */
+@media (max-width: 768px) {
+  .video-background video {
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
 /* Responsive design improvements */
 @media (max-width: 768px) {
   .hero-title {
