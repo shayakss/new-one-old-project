@@ -199,23 +199,23 @@ const MarkdownRenderer = ({ content, messageType = 'assistant' }) => {
         components={{
           // Custom styling for different markdown elements
           p: ({ children }) => (
-            <p className={`mb-4 leading-relaxed font-['Inter','system-ui',sans-serif] ${
+            <p className={`mb-4 leading-relaxed ${
               messageType === 'user' ? 'text-gray-200' : 'text-gray-100'
-            }`}>
+            }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
               {children}
             </p>
           ),
           strong: ({ children }) => (
-            <strong className={`font-semibold font-['Inter','system-ui',sans-serif] ${
+            <strong className={`font-semibold ${
               messageType === 'user' ? 'text-green-300' : 'text-green-400'
-            }`}>
+            }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
               {children}
             </strong>
           ),
           em: ({ children }) => (
-            <em className={`italic font-['Inter','system-ui',sans-serif] ${
+            <em className={`italic ${
               messageType === 'user' ? 'text-gray-300' : 'text-gray-200'
-            }`}>
+            }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
               {children}
             </em>
           ),
