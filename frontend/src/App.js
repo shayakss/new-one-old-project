@@ -8,33 +8,6 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
 import VideoBackground from './components/VideoBackground';
 
-// Professional Typewriter Effect Component
-const TypewriterText = ({ text, speed = 15, onComplete }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const indexRef = useRef(0);
-
-  useEffect(() => {
-    if (!text) return;
-    
-    setDisplayedText('');
-    indexRef.current = 0;
-
-    const timer = setInterval(() => {
-      if (indexRef.current < text.length) {
-        setDisplayedText(prev => prev + text[indexRef.current]);
-        indexRef.current++;
-      } else {
-        clearInterval(timer);
-        if (onComplete) onComplete();
-      }
-    }, speed);
-
-    return () => clearInterval(timer);
-  }, [text, speed, onComplete]);
-
-  return <span>{displayedText}<span className="typewriter-cursor">|</span></span>;
-};
-
 // Animated Counter Component
 const CountUp = ({ end, duration = 2000, delay = 0 }) => {
   const [count, setCount] = useState(0);
