@@ -1778,27 +1778,20 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                           {containsMarkdown(message.content) ? (
                             <div className="prose prose-invert max-w-none">
                               {message.role === 'assistant' ? (
-                                <TypewriterText 
-                                  text={message.content} 
-                                  speed={15}
+                                <MarkdownRenderer 
+                                  content={message.content} 
+                                  messageType="assistant"
                                 />
                               ) : (
                                 <MarkdownRenderer 
-                                  content={message.content} 
-                                  messageType={message.role}
+                                  content={message.content || ''} 
+                                  messageType="user"
                                 />
                               )}
                             </div>
                           ) : (
-                            <div className="whitespace-pre-wrap">
-                              {message.role === 'assistant' ? (
-                                <TypewriterText 
-                                  text={message.content || ''} 
-                                  speed={15}
-                                />
-                              ) : (
-                                message.content || ''
-                              )}
+                            <div className="whitespace-pre-wrap" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+                              {message.content || ''}
                             </div>
                           )}
                         </div>
