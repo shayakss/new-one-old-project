@@ -15,7 +15,7 @@ from typing import Dict, List, Any, Optional
 import uuid
 
 # Backend URL from frontend/.env
-BACKEND_URL = "https://20f35a5c-6b48-421b-af0b-9bb6afed2668.preview.emergentagent.com"
+BACKEND_URL = "https://baf0e8e2-0040-4519-b1f3-cae53204ee8e.preview.emergentagent.com"
 API_BASE_URL = f"{BACKEND_URL}/api"
 
 class ChatPDFTester:
