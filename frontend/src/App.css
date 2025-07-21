@@ -776,7 +776,7 @@ body {
 /* Enhanced Message Bubbles with Subtle Shadows */
 .message-bubble {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--message-border);
   border-radius: 12px;
   padding: 16px 20px;
   margin: 8px 0;
@@ -796,7 +796,7 @@ body {
 }
 
 .message-bubble.user-message {
-  background: rgba(0, 255, 136, 0.08);
+  background: var(--message-bg-user);
   border-color: rgba(0, 255, 136, 0.2);
   box-shadow: 
     0 4px 6px rgba(0, 255, 136, 0.1),
@@ -804,8 +804,8 @@ body {
 }
 
 .message-bubble.ai-message {
-  background: rgba(31, 41, 55, 0.3);
-  border-color: rgba(100, 116, 139, 0.2);
+  background: var(--message-bg-ai);
+  border-color: var(--message-border);
   box-shadow: 
     0 4px 6px rgba(0, 0, 0, 0.1),
     0 1px 3px rgba(0, 0, 0, 0.08);
