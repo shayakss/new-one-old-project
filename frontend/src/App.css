@@ -12,6 +12,11 @@
   --text-tertiary: #64748b;
   --border-primary: #e2e8f0;
   --border-secondary: #cbd5e1;
+  --message-bg-user: rgba(99, 102, 241, 0.1);
+  --message-bg-ai: rgba(15, 23, 42, 0.05);
+  --message-border: rgba(203, 213, 225, 0.2);
+  --code-bg: #1e1e1e;
+  --code-text: #00ff99;
 }
 
 [data-theme="dark"] {
@@ -23,6 +28,11 @@
   --text-tertiary: #94a3b8;
   --border-primary: #334155;
   --border-secondary: #475569;
+  --message-bg-user: rgba(55, 65, 81, 0.05);
+  --message-bg-ai: rgba(31, 41, 55, 0.05);
+  --message-border: rgba(100, 116, 139, 0.2);
+  --code-bg: #1e1e1e;
+  --code-text: #00ff99;
 }
 
 /* Professional Typography System - Reset and Base */
