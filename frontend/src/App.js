@@ -230,30 +230,30 @@ const MarkdownRenderer = ({ content, messageType = 'assistant' }) => {
             </ol>
           ),
           li: ({ children }) => (
-            <li className={`font-['Inter','system-ui',sans-serif] leading-relaxed ${
+            <li className={`leading-relaxed ${
               messageType === 'user' ? 'text-gray-200' : 'text-gray-100'
-            }`}>
+            }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
               {children}
             </li>
           ),
           h1: ({ children }) => (
-            <h1 className={`text-xl font-bold mb-4 font-['Inter','system-ui',sans-serif] ${
+            <h1 className={`text-xl font-bold mb-4 ${
               messageType === 'user' ? 'text-green-300' : 'text-green-400'
-            }`}>
+            }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
               {children}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className={`text-lg font-semibold mb-3 font-['Inter','system-ui',sans-serif] ${
+            <h2 className={`text-lg font-semibold mb-3 ${
               messageType === 'user' ? 'text-green-300' : 'text-green-400'
-            }`}>
+            }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className={`text-base font-medium mb-2 font-['Inter','system-ui',sans-serif] ${
+            <h3 className={`text-base font-medium mb-2 ${
               messageType === 'user' ? 'text-green-300' : 'text-green-400'
-            }`}>
+            }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
               {children}
             </h3>
           ),
