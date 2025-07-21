@@ -1834,15 +1834,15 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                         <span className="text-xs text-gray-500 ml-2">typing...</span>
                       </div>
                       
-                      <div className="text-gray-100">
-                        <div className="flex items-center space-x-2">
-                          <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
-                          </div>
-                          <span className="text-xs sm:text-sm text-gray-400 ml-2">Thinking...</span>
+                      <div className="typing-animation">
+                        <div className="typing-dots">
+                          <div className="typing-dot"></div>
+                          <div className="typing-dot"></div>
+                          <div className="typing-dot"></div>
                         </div>
+                        <span className="text-sm text-gray-300 ml-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+                          Thinking...
+                        </span>
                       </div>
                     </div>
                   </div>
