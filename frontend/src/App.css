@@ -509,13 +509,7 @@ body {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Typewriter cursor */
-.typewriter-cursor {
-  animation: blink 1s infinite;
-  color: #a855f7;
-}
-
-/* Parallax elements */
+/* Enhanced animations */
 .parallax-slow {
   transform: translateY(0);
   transition: transform 0.5s ease-out;
