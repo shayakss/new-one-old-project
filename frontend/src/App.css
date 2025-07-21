@@ -682,11 +682,12 @@ body {
   box-shadow: 2px 0 10px rgba(0, 255, 136, 0.2);
 }
 
-/* ChatGPT-style Message Layout */
+/* ChatGPT-style Message Layout with Enhanced Styling */
 .chatgpt-message-container {
   position: relative;
   width: 100%;
   transition: background-color 0.2s ease;
+  padding: 12px 0;
 }
 
 .chatgpt-message-container:hover {
@@ -699,6 +700,61 @@ body {
 
 .chatgpt-ai-message {
   background-color: rgba(31, 41, 55, 0.05);
+}
+
+/* Enhanced Message Bubbles with Subtle Shadows */
+.message-bubble {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 8px 0;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.07),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.message-bubble:hover {
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    0 3px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.message-bubble.user-message {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.2);
+  box-shadow: 
+    0 4px 6px rgba(0, 255, 136, 0.1),
+    0 1px 3px rgba(0, 255, 136, 0.05);
+}
+
+.message-bubble.ai-message {
+  background: rgba(31, 41, 55, 0.3);
+  border-color: rgba(100, 116, 139, 0.2);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.message-bubble.system-message {
+  background: rgba(139, 69, 19, 0.1);
+  border-color: rgba(139, 69, 19, 0.3);
+  box-shadow: 
+    0 4px 6px rgba(139, 69, 19, 0.1),
+    0 1px 3px rgba(139, 69, 19, 0.05);
+}
+
+/* Vertically Stacked Message Layout */
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 20px;
+  max-width: 100%;
 }
 
 .chatgpt-message-container .group:hover .opacity-0 {
