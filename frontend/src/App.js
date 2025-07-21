@@ -1864,7 +1864,11 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
                       disabled={loading || (currentFeature !== 'general_ai' && currentFeature !== 'system_health' && !(currentSession?.document_filename || currentSession?.pdf_filename))}
                       className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-white placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                       rows={inputMessage.split('\n').length || 1}
-                      style={{minHeight: '40px', maxHeight: '120px'}}
+                      style={{
+                        minHeight: '40px', 
+                        maxHeight: '120px',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+                      }}
                     />
                     {recognitionRef.current && (currentFeature === 'chat' || currentFeature === 'general_ai') && (
                       <button
