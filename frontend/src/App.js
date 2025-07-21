@@ -259,22 +259,14 @@ const MarkdownRenderer = ({ content, messageType = 'assistant' }) => {
           ),
           code: ({ inline, children }) => (
             inline ? (
-              <code className={`px-2 py-1 rounded text-sm font-mono ${
-                messageType === 'user' 
-                  ? 'bg-black/30 text-green-300' 
-                  : 'bg-gray-800/50 text-green-400'
-              }`}>
+              <code className="code-inline">
                 {children}
               </code>
             ) : (
-              <pre className={`p-4 rounded-lg overflow-x-auto mb-4 ${
-                messageType === 'user' 
-                  ? 'bg-black/30' 
-                  : 'bg-gray-800/50'
-              }`}>
-                <code className={`font-mono text-sm ${
-                  messageType === 'user' ? 'text-green-300' : 'text-green-400'
-                }`}>{children}</code>
+              <pre className="code-block">
+                <code style={{ fontFamily: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace' }}>
+                  {children}
+                </code>
               </pre>
             )
           ),
