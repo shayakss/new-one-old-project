@@ -777,7 +777,7 @@ body {
   background-color: rgba(16, 185, 129, 0.05);
 }
 
-/* Enhanced Message Bubbles with Subtle Shadows */
+/* Enhanced Message Bubbles with Subtle Shadows - Home Page Colors */
 .message-bubble {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--message-border);
@@ -793,26 +793,26 @@ body {
 
 .message-bubble:hover {
   box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.15),
-    0 3px 10px rgba(0, 0, 0, 0.1);
+    0 8px 25px rgba(139, 92, 246, 0.15),
+    0 3px 10px rgba(139, 92, 246, 0.1);
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(139, 92, 246, 0.3);
 }
 
 .message-bubble.user-message {
   background: var(--message-bg-user);
-  border-color: rgba(0, 255, 136, 0.2);
+  border-color: rgba(139, 92, 246, 0.2);
   box-shadow: 
-    0 4px 6px rgba(0, 255, 136, 0.1),
-    0 1px 3px rgba(0, 255, 136, 0.05);
+    0 4px 6px rgba(139, 92, 246, 0.1),
+    0 1px 3px rgba(139, 92, 246, 0.05);
 }
 
 .message-bubble.ai-message {
   background: var(--message-bg-ai);
   border-color: var(--message-border);
   box-shadow: 
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.08);
+    0 4px 6px rgba(16, 185, 129, 0.1),
+    0 1px 3px rgba(16, 185, 129, 0.08);
 }
 
 .message-bubble.system-message {
