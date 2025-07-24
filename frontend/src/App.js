@@ -604,6 +604,7 @@ const FeatureCardEnhanced = ({ icon, title, description, isNew = false }) => {
 };
 
 const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) => {
+  const { theme } = useTheme();
   const [sessions, setSessions] = useState([]);
   const [currentSession, setCurrentSession] = useState(null);
   const [messages, setMessages] = useState([]);
