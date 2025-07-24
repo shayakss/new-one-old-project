@@ -248,7 +248,7 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #00ff99;
+  background: linear-gradient(135deg, #a855f7, #10b981);
   animation: typingDot 1.4s infinite ease-in-out;
   opacity: 0.4;
 }
