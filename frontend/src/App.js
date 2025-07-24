@@ -2025,14 +2025,14 @@ const ModernNavTab = ({ isActive, onClick, icon, name, isCompact }) => {
       onClick={onClick}
       className={`w-full flex items-center transition-all duration-200 rounded-xl p-3 group ${
         isActive 
-          ? 'bg-green-400/20 border border-green-400/40 text-green-400' 
-          : 'hover:bg-green-400/10 border border-transparent hover:border-green-400/20 text-gray-400 hover:text-green-400'
+          ? 'bg-gradient-to-r from-purple-500/20 to-emerald-500/20 border border-purple-500/40 text-white' 
+          : 'hover:bg-white/10 border border-transparent hover:border-white/20 text-gray-400 hover:text-white'
       }`}
     >
       <div className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-lg transition-all duration-200 ${
         isActive 
-          ? 'bg-green-400/30' 
-          : 'bg-gray-700/50 group-hover:bg-green-400/20'
+          ? 'bg-gradient-to-r from-purple-500 to-emerald-500 text-white shadow-lg' 
+          : 'bg-white/10 group-hover:bg-white/20'
       }`}>
         {icon}
       </div>
