@@ -1179,29 +1179,57 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
   };
 
   return (
-    <div className="h-screen flex" style={{background: '#000000'}}>
-      {/* Modern Compact Sidebar */}
-      <div className={`${sidebarOpen ? 'w-72' : 'w-20'} text-white transition-all duration-300 flex flex-col`} style={{background: 'linear-gradient(180deg, #0f1419 0%, #0a0e13 100%)'}}>
+    <div className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
+      {/* Background Effects - matching home page */}
+      {theme === 'dark' && (
+        <>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse z-10"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000 z-10"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-500 z-10"></div>
+        </>
+      )}
+
+      <div className="h-screen flex relative z-20">
+      {/* Modern Sidebar with Home Page Styling */}
+      <div className={`${sidebarOpen ? 'w-72' : 'w-20'} transition-all duration-300 flex flex-col`}>
+        <div className="h-full glass-card border-r border-white/10 text-white">
         {/* Header Section */}
-        <div className="p-4 border-b border-green-400/20">
+        <div className="p-4 border-b border-white/10">
           <div className="flex items-center justify-between">
             {sidebarOpen && (
-              <button
-                onClick={() => setCurrentView('home')}
-                className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors font-medium text-sm"
-              >
-                <div className="w-6 h-6 rounded-full bg-green-400/20 flex items-center justify-center">
-                  <span className="text-xs">←</span>
+              <AnimatedSection animationType="fadeInLeft" delay={100}>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg animate-pulseGlow">
+                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h1 className="text-lg font-bold text-white drop-shadow-lg">Baloch AI</h1>
+                    <p className="text-xs text-gray-300 drop-shadow-md">AI Assistant</p>
+                  </div>
                 </div>
-                <span>Home</span>
-              </button>
+              </AnimatedSection>
             )}
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="w-8 h-8 rounded-full bg-green-400/10 hover:bg-green-400/20 flex items-center justify-center text-green-400 transition-all duration-200"
-            >
-              <span className="text-sm">{sidebarOpen ? '←' : '→'}</span>
-            </button>
+            <div className="flex items-center space-x-2">
+              {sidebarOpen && (
+                <button
+                  onClick={() => setCurrentView('home')}
+                  className="text-white/70 hover:text-white transition-colors duration-300 p-2 rounded-lg hover:bg-white/10"
+                  title="Back to Home"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                </button>
+              )}
+              <button
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center text-white transition-all duration-200"
+              >
+                <span className="text-sm">{sidebarOpen ? '←' : '→'}</span>
+              </button>
+            </div>
           </div>
         </div>
 
