@@ -756,7 +756,7 @@ body {
   box-shadow: 2px 0 10px rgba(0, 255, 136, 0.2);
 }
 
-/* ChatGPT-style Message Layout with Enhanced Styling */
+/* ChatGPT-style Message Layout with Enhanced Styling - Home Page Colors */
 .chatgpt-message-container {
   position: relative;
   width: 100%;
@@ -765,15 +765,15 @@ body {
 }
 
 .chatgpt-message-container:hover {
-  background-color: rgba(55, 65, 81, 0.1);
+  background-color: rgba(139, 92, 246, 0.05);
 }
 
 .chatgpt-user-message {
-  background-color: rgba(55, 65, 81, 0.05);
+  background-color: rgba(139, 92, 246, 0.05);
 }
 
 .chatgpt-ai-message {
-  background-color: rgba(31, 41, 55, 0.05);
+  background-color: rgba(16, 185, 129, 0.05);
 }
 
 /* Enhanced Message Bubbles with Subtle Shadows */
