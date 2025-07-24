@@ -184,20 +184,20 @@ body {
 .font-extrabold { font-weight: 800; }
 .font-black { font-weight: 900; }
 
-/* Black and Green Color System for Text */
-.text-primary { color: #00ff88; }
+/* Home Page Color System - Updated to Purple/Emerald Theme */
+.text-primary { color: #a855f7; }
 .text-secondary { color: #e5e7eb; }
 .text-tertiary { color: #d1d5db; }
 .text-quaternary { color: #9ca3af; }
 .text-muted { color: #6b7280; }
 .text-disabled { color: #4b5563; }
 
-.text-brand { color: #00ff88; }
-.text-brand-light { color: #66ffaa; }
-.text-success { color: #00ff88; }
+.text-brand { color: #a855f7; }
+.text-brand-light { color: #c084fc; }
+.text-success { color: #10b981; }
 .text-warning { color: #fbbf24; }
 .text-error { color: #f87171; }
-.text-info { color: #00ff88; }
+.text-info { color: #a855f7; }
 
 .App {
   height: 100vh;
