@@ -1280,12 +1280,14 @@ const ChatInterface = ({ currentFeature, setCurrentFeature, setCurrentView }) =>
           {sidebarOpen && (
             <>
               {/* New Chat Button */}
-              <div className="pt-4 border-t border-green-400/20">
+              <div className="pt-4 border-t border-white/20">
                 <button
                   onClick={createNewSession}
-                  className="w-full bg-green-400/10 hover:bg-green-400/20 border border-green-400/30 hover:border-green-400/50 text-green-400 py-3 px-4 rounded-xl font-medium text-sm transition-all duration-200 flex items-center justify-center space-x-2"
+                  className="w-full bg-gradient-to-r from-purple-500 to-emerald-500 text-white px-4 py-3 rounded-xl hover:from-purple-600 hover:to-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
                 >
-                  <span className="text-lg">+</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
                   <span>New Chat</span>
                 </button>
               </div>
