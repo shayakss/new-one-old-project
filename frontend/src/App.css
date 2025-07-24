@@ -204,22 +204,22 @@ body {
   overflow: hidden;
 }
 
-/* Custom scrollbar for dark theme */
+/* Custom scrollbar for dark theme - Home Page Colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: rgba(15, 23, 42, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00ff88;
+  background: linear-gradient(135deg, #a855f7, #10b981);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00cc6a;
+  background: linear-gradient(135deg, #9333ea, #059669);
 }
 
 
